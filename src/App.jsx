@@ -8,19 +8,6 @@ import Dashboard from "./components/Dashboard";
 import axios from "axios";
 
 function App() {
-  const [herokuTest, setHerokuTest] = useState("");
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  /* handlers */
-  const fetchData = async () => {
-    const result = await axios.get("/api/v1");
-    setHerokuTest(result.data.results);
-    return;
-  };
-
   return (
     <>
       <AuthContextProvider>
