@@ -1,13 +1,156 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* signup, login, forgot-password */
+.auth-input {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  border: 0;
+  font-size: 0.9rem;
+  font-weight: 200;
+  line-height: 40px;
+  padding: 0 15px;
+  color: rgba(92, 114, 138, 1);
+  background-color: rgb(234, 239, 240);
+}
+
+.signup-form-container,
+.login-form-container,
+.forgot-password-form-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.signup-title,
+.login-title,
+.forgot-password-title {
+  padding-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.signup-title h2,
+.login-title h2,
+.forgot-password-title h2 {
+  text-align: center;
+  color: rgba(93, 115, 140, 1);
+}
+
+.signup-form,
+.login-form,
+.forgot-password-form {
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+}
+
+.signup-btn-container,
+.login-btn-container,
+.forgot-password-btn-container {
+  text-align: center;
+}
+
+.signup-btn,
+.login-btn,
+.forgot-password-btn {
+  display: inline-block;
+  padding: 0.8em;
+  width: 8em;
+  color: #fff;
+  background-color: #0a80ff;
+  border-color: #0a80ff;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+}
+
+.forgot-password-btn {
+  width: 10em;
+}
+
+.signup-additional-info,
+.login-additional-info,
+.forgot-password-additional-info {
+  text-align: center;
+  color: rgba(92, 114, 138, 1);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.forgot-password-login-link {
+  text-align: center;
+  color: rgba(92, 114, 138, 1);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  text-align: left;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  border-radius: 0.25rem;
+  padding: 0.4em;
+  padding-left: 1em;
+}
+
+.password-reset-message {
+  text-align: left;
+  margin-bottom: 1rem;
+  color: #155724;
+  font-weight: 400;
+  background-color: #d4edda;
+  border-color: #f5c6cb;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  border-radius: 0.25rem;
+  padding: 0.4em;
+  padding-left: 1em;
+}
+
+/* navbar */
+.nav-main-grid {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  color: #3a4654;
+}
+
+.nav-login-link,
+.nav-logout-link {
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 6px;
+  border: none;
+}
+
+.nav-login-link-text {
+  text-decoration: none;
+}
+
+/* Dashboard */
+.dashboard-wrapper {
+  background-color: rgb(237, 241, 245);
+  min-height: 100vh;
 }
