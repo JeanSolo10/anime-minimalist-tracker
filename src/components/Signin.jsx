@@ -76,6 +76,9 @@ export default function Signin() {
           </div>
         </form>
         <div className="login-additional-info">
+          Forgot Password? <Link to="/forgot-password">Forgot Password?</Link>
+        </div>
+        <div className="login-additional-info">
           Don't have an account yet? <Link to="/signup">Sign up</Link>
         </div>
       </div>
