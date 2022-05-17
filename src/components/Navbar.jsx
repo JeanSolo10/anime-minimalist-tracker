@@ -13,7 +13,7 @@ export default function Navbar(props) {
     try {
       await logout();
       setLoading(true);
-      sessionStorage.removeItem("Auth Token");
+      localStorage.removeItem("Auth Token");
       navigate("/login");
     } catch (error) {
       setError("Failed to logout");

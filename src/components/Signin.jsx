@@ -11,7 +11,7 @@ export default function Signin() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const authToken = sessionStorage.getItem("Auth Token");
+    const authToken = localStorage.getItem("Auth Token");
     if (authToken && user) {
       navigate("/");
     }
@@ -27,7 +27,7 @@ export default function Signin() {
         emailRef.current.value,
         passwordRef.current.value
       );
-      sessionStorage.setItem("Auth Token", response._tokenResponse.idToken);
+      localStorage.setItem("Auth Token", response._tokenResponse.idToken);
       navigate("/");
     } catch (error) {
       const errorMessage = handleFirebaseErrors(error.message);

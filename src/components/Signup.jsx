@@ -22,7 +22,11 @@ export default function Signup() {
     try {
       setError("");
       setLoading(true);
-      await createUser(emailRef.current.value, passwordRef.current.value);
+      const response = await createUser(
+        emailRef.current.value,
+        passwordRef.current.value
+      );
+      localStorage.setItem("Auth Token", response._tokenResponse.idToken);
       navigate("/");
     } catch (error) {
       const errorMessage = handleFirebaseErrors(error.message);
