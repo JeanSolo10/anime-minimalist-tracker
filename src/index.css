@@ -128,3 +128,29 @@ code {
   padding: 0.4em;
   padding-left: 1em;
 }
+
+/* navbar */
+.nav-main-grid {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  color: #3a4654;
+}
+
+.nav-login-link,
+.nav-logout-link {
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 6px;
+  border: none;
+}
+
+.nav-login-link-text {
+  text-decoration: none;
+}
+
+/* Dashboard */
+.dashboard-wrapper {
+  background-color: rgb(237, 241, 245);
+  min-height: 100vh;
+}
