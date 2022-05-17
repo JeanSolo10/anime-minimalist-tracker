@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-axios.defaults.baseURL = "http://localhost:5000";
 
 function App() {
   const [herokuTest, setHerokuTest] = useState("");
