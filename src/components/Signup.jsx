@@ -11,6 +11,7 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const { createUser } = UserAuth();
   const navigate = useNavigate();
+  let componentMounted = true;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +34,9 @@ export default function Signup() {
       setError(errorMessage);
     } finally {
       setLoading(false);
+      return () => {
+        componentMounted = false;
+      };
     }
   };
 
