@@ -17,7 +17,7 @@ code {
     monospace;
 }
 
-/* signup */
+/* signup, login, forgot-password */
 .auth-input {
   width: 100%;
   margin-bottom: 1.5rem;
@@ -32,37 +32,43 @@ code {
 }
 
 .signup-form-container,
-.login-form-container {
+.login-form-container,
+.forgot-password-form-container {
   width: 100%;
   min-height: 100vh;
 }
 
 .signup-title,
-.login-title {
+.login-title,
+.forgot-password-title {
   padding-top: 3rem;
   margin-bottom: 3rem;
 }
 
 .signup-title h2,
-.login-title h2 {
+.login-title h2,
+.forgot-password-title h2 {
   text-align: center;
   color: rgba(93, 115, 140, 1);
 }
 
 .signup-form,
-.login-form {
+.login-form,
+.forgot-password-form {
   width: 300px;
   margin: 0 auto;
   margin-bottom: 1.5rem;
 }
 
 .signup-btn-container,
-.login-btn-container {
+.login-btn-container,
+.forgot-password-btn-container {
   text-align: center;
 }
 
 .signup-btn,
-.login-btn {
+.login-btn,
+.forgot-password-btn {
   display: inline-block;
   padding: 0.8em;
   width: 8em;
@@ -75,20 +81,46 @@ code {
   border: none;
 }
 
+.forgot-password-btn {
+  width: 10em;
+}
+
 .signup-additional-info,
-.login-additional-info {
+.login-additional-info,
+.forgot-password-additional-info {
   text-align: center;
   color: rgba(92, 114, 138, 1);
   font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.forgot-password-login-link {
+  text-align: center;
+  color: rgba(92, 114, 138, 1);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
 }
 
 .error-message {
   text-align: left;
   margin-bottom: 1rem;
-  color: #c01828;
   font-weight: 400;
   color: #721c24;
   background-color: #f8d7da;
+  border-color: #f5c6cb;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  border-radius: 0.25rem;
+  padding: 0.4em;
+  padding-left: 1em;
+}
+
+.password-reset-message {
+  text-align: left;
+  margin-bottom: 1rem;
+  color: #155724;
+  font-weight: 400;
+  background-color: #d4edda;
   border-color: #f5c6cb;
   margin-left: 3rem;
   margin-right: 3rem;
