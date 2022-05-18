@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import axios from "axios";
 
 export default function Signup() {
   const emailRef = useRef();
@@ -23,11 +24,49 @@ export default function Signup() {
     try {
       setError("");
       setLoading(true);
+      let isUsernameTaken = false;
+      try {
+        const result = await axios.get(
+          `/api/v1/users/${usernameRef.current.value}`
+        );
+        if (result.data.results.length > 0) {
+          isUsernameTaken = true;
+        }
+      } catch (error) {
+        setError(error.message);
+      }
+
+      if (isUsernameTaken) {
+        return setError("Username is taken!");
+      }
       const response = await createUser(
         emailRef.current.value,
         passwordRef.current.value
       );
       localStorage.setItem("Auth Token", response._tokenResponse.idToken);
+
+      /* handle database call */
+      const submittedEmail = response.user.email;
+      const submittedUid = response.user.uid;
+      const submittedUsername = usernameRef.current.value;
+      const token = response._tokenResponse.idToken;
+      const data = {
+        email: submittedEmail,
+        username: submittedUsername,
+        id: submittedUid,
+      };
+
+      try {
+        const axiosConfig = {
+          headers: {
+            Authorization: token,
+          },
+        };
+        await axios.post("/api/v1/users", data, axiosConfig);
+      } catch (error) {
+        setError(error.message);
+      }
+
       navigate("/");
     } catch (error) {
       const errorMessage = handleFirebaseErrors(error.message);
