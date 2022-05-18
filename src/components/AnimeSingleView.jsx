@@ -61,7 +61,11 @@ export default function AnimeSingleView() {
                       </span>
                     ))}
                 </div>
-                <p></p>
+                <div className="anime-add-to-list-container">
+                  <button className="anime-add-to-list-btn">
+                    Add to watch list
+                  </button>
+                </div>
               </div>
             </div>
 
