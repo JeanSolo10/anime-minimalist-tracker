@@ -44,3 +44,7 @@
 .anime-header h2 {
   font-size: 1.2rem;
 }
+
+.anime-header-view-all-link {
+  text-decoration: none;
+}

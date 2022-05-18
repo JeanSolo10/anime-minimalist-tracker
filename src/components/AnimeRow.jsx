@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import axios from "axios";
 import "../styles/AnimeRow.css";
+import { setCurrenSeasonAnimes } from "../features/animes/animeSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function AnimeRow(props) {
   const { title, season } = props;
   const [currentSeasonAnimes, setcurrentSeasonAnimes] = useState([]);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  /* redux */
+  const animes = useSelector((state) => state.animes.value);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchAnime();
@@ -30,6 +36,7 @@ export default function AnimeRow(props) {
         morePagesAvailable = hasNextPage;
       }
       setcurrentSeasonAnimes(allData);
+      dispatch(setCurrenSeasonAnimes(allData));
     } catch (error) {
       setError(error.message);
     }
@@ -43,7 +50,11 @@ export default function AnimeRow(props) {
           <h2>
             {title} - {season}
           </h2>
-          <p>View All</p>
+          <div className="anime-header-view-all">
+            <Link className="anime-header-view-all-link" to={`/seasons/${season.toString().toLowerCase()}`}>
+              View All
+            </Link>
+          </div>
         </div>
         <div className="row__posters">
           {currentSeasonAnimes.slice(0, 20).map((anime) => (

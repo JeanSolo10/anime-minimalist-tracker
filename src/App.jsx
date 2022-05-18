@@ -5,6 +5,7 @@ import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 import ForgotPassword from "./components/ForgotPassword";
 import Dashboard from "./components/Dashboard";
+import AllAnimeBySeason from "./components/AllAnimeBySeason";
 import axios from "axios";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/" element={<Dashboard />}></Route>
           <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+          <Route path="/seasons/:season" element={<AllAnimeBySeason />}></Route>
         </Routes>
       </AuthContextProvider>
     </>
