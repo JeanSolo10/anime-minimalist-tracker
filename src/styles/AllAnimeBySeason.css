@@ -1,0 +1,49 @@
+/* Anime by season styling */
+/* .all-anime-bs-row__poster {
+  width: 100%;
+  object-fit: contain;
+  max-height: 180px;
+  transition: transform 450ms;
+} */
+
+.all-anime-bs-card img {
+  width: 80%;
+  object-fit: cover;
+  transition: transform 450ms;
+  border-radius: 5%;
+}
+
+.all-anime-bs-card {
+  text-align: center;
+  height: fit-content;
+}
+
+.all-anime-bs-row__poster:hover {
+  transform: scale(1.08);
+}
+
+.all-anime-bs-row__posters {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1.25rem;
+  justify-content: center;
+  height: auto;
+  grid-column-gap: 2rem;
+}
+
+.all-anime-bs-row__posters p {
+  font-size: 0.8rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  color: #3a4654;
+  padding: 0.5rem;
+}
+
+.all-anime-bs-header {
+  padding: 0.6rem;
+  color: #3a4654;
+}
+
+.all-anime-bs-header h2 {
+  font-size: 1.2rem;
+}
