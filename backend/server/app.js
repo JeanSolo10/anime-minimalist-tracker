@@ -12,7 +12,11 @@ app.use(cors());
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 
 /* Firebase Middleware */
-app.use(decodeToken);
+//app.use(decodeToken);
+
+/* controllers */
+const usersController = require("../controllers/users.controller");
+app.use("/api/v1/users", usersController);
 
 /* Endpoints */
 app.get("/api/v1", (req, res) => {
