@@ -3,17 +3,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import axios from "axios";
 import "../styles/AnimeRow.css";
-import { setCurrenSeasonAnimes } from "../features/animes/animeSlice";
+import {
+  setCurrenSeasonAnimes,
+  setAnimeSingleViewIndex,
+} from "../features/animes/animeSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function AnimeRow(props) {
   const { title, season } = props;
-  const [currentSeasonAnimes, setcurrentSeasonAnimes] = useState([]);
+  //const [currentSeasonAnimes, setcurrentSeasonAnimes] = useState([]);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   /* redux */
-  const animes = useSelector((state) => state.animes.value);
+  const { currentSeasonAnimes } = useSelector((state) => state.animes);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,7 +38,6 @@ export default function AnimeRow(props) {
         allData = [...allData, ...result.data.data];
         morePagesAvailable = hasNextPage;
       }
-      setcurrentSeasonAnimes(allData);
       dispatch(setCurrenSeasonAnimes(allData));
     } catch (error) {
       setError(error.message);
@@ -60,9 +62,10 @@ export default function AnimeRow(props) {
           </div>
         </div>
         <div className="row__posters">
-          {currentSeasonAnimes.slice(0, 20).map((anime) => (
+          {currentSeasonAnimes.slice(0, 20).map((anime, index) => (
             <div anime={anime} key={anime.mal_id} className="anime-card">
               <Link
+                onClick={() => dispatch(setAnimeSingleViewIndex(index))}
                 to={`/anime/${anime.mal_id}/${anime.title
                   .toString()
                   .replaceAll(" ", "-")}`}
