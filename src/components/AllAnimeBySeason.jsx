@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "../styles/AllAnimeBySeason.css";
 
 export default function AllAnimeBySeason(props) {
   const { currentSeasonAnimes } = useSelector((state) => state.animes);
-  console.log(currentSeasonAnimes);
   return (
     <>
       <div className="all-anime-bs-row">
@@ -15,11 +14,17 @@ export default function AllAnimeBySeason(props) {
         <div className="all-anime-bs-row__posters">
           {currentSeasonAnimes.map((anime) => (
             <div anime={anime} key={anime.mal_id} className="all-anime-bs-card">
-              <img
-                className="all-anime-bs-row__poster"
-                src={anime.images.jpg.image_url}
-                alt="anime"
-              />
+              <Link
+                to={`/anime/${anime.mal_id}/${anime.title
+                  .toString()
+                  .replaceAll(" ", "-")}`}
+              >
+                <img
+                  className="all-anime-bs-row__poster"
+                  src={anime.images.jpg.image_url}
+                  alt="anime"
+                />
+              </Link>
               <p>{anime.title}</p>
             </div>
           ))}

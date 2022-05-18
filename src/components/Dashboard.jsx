@@ -14,7 +14,6 @@ export default function Dashboard() {
   });
 
   const getSeason = (month) => {
-    console.log("MONTH", month);
     if (month >= 3 && month <= 5) {
       return "Spring";
     }

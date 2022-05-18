@@ -6,6 +6,7 @@ import Signup from "./components/Signup";
 import ForgotPassword from "./components/ForgotPassword";
 import Dashboard from "./components/Dashboard";
 import AllAnimeBySeason from "./components/AllAnimeBySeason";
+import AnimeSingleView from "./components/AnimeSingleView";
 import axios from "axios";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Dashboard />}></Route>
           <Route path="/forgot-password" element={<ForgotPassword />}></Route>
           <Route path="/seasons/:season" element={<AllAnimeBySeason />}></Route>
+          <Route path="/anime/:id/:name" element={<AnimeSingleView />}></Route>
         </Routes>
       </AuthContextProvider>
     </>

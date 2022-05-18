@@ -51,7 +51,10 @@ export default function AnimeRow(props) {
             {title} - {season}
           </h2>
           <div className="anime-header-view-all">
-            <Link className="anime-header-view-all-link" to={`/seasons/${season.toString().toLowerCase()}`}>
+            <Link
+              className="anime-header-view-all-link"
+              to={`/seasons/${season.toString().toLowerCase()}`}
+            >
               View All
             </Link>
           </div>
@@ -59,11 +62,17 @@ export default function AnimeRow(props) {
         <div className="row__posters">
           {currentSeasonAnimes.slice(0, 20).map((anime) => (
             <div anime={anime} key={anime.mal_id} className="anime-card">
-              <img
-                className="row__poster"
-                src={anime.images.jpg.image_url}
-                alt="anime"
-              />
+              <Link
+                to={`/anime/${anime.mal_id}/${anime.title
+                  .toString()
+                  .replaceAll(" ", "-")}`}
+              >
+                <img
+                  className="row__poster"
+                  src={anime.images.jpg.image_url}
+                  alt="anime"
+                />
+              </Link>
               <p>
                 {anime.title.length > 30
                   ? `${anime.title.substring(0, 28)}... `
