@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   currentSeasonAnimes: [],
+  selectedAnimeIndex: 0,
 };
 
 export const animesSlice = createSlice({
@@ -11,10 +12,14 @@ export const animesSlice = createSlice({
     setCurrenSeasonAnimes: (state, action) => {
       state.currentSeasonAnimes = action.payload;
     },
+    setAnimeSingleViewIndex: (state, action) => {
+      state.selectedAnimeIndex = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setCurrenSeasonAnimes } = animesSlice.actions;
+export const { setCurrenSeasonAnimes, setAnimeSingleViewIndex } =
+  animesSlice.actions;
 
 export default animesSlice.reducer;
