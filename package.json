@@ -27,7 +27,9 @@
     "hack": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run"
   },
   "eslintConfig": {
     "extends": [
