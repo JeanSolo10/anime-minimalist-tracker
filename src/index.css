@@ -135,6 +135,7 @@ code {
   justify-content: space-between;
   padding: 1rem;
   color: #3a4654;
+  margin-bottom: 1rem;
 }
 
 .nav-login-link,
@@ -147,6 +148,10 @@ code {
 
 .nav-login-link-text {
   text-decoration: none;
+}
+
+.nav-title {
+  font-weight: 800;
 }
 
 /* Dashboard */
