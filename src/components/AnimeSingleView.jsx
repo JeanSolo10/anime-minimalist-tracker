@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { setCurrenSeasonAnimes } from "../features/animes/animeSlice";
+import {
+  setCurrenSeasonAnimes,
+  updateAnimeInUserWatchList,
+} from "../features/animes/animeSlice";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import "../styles/AnimeSingleView.css";
@@ -8,15 +11,18 @@ export default function AnimeSingleView() {
   const [anime, setAnime] = useState([]);
   const placeholderImage = require("../images/anime_placeholder.jpg");
   /* redux */
-  const { currentSeasonAnimes, selectedAnimeIndex } = useSelector(
-    (state) => state.animes
-  );
+  const { currentSeasonAnimes, selectedAnimeIndex, animeInUserWatchList } =
+    useSelector((state) => state.animes);
 
   useEffect(() => {
     setAnime(currentSeasonAnimes[selectedAnimeIndex]);
   }, []);
 
   const dispatch = useDispatch();
+
+  const handleButtonClick = (action, id) => {
+    dispatch(updateAnimeInUserWatchList(id));
+  };
 
   return (
     <>
@@ -62,9 +68,21 @@ export default function AnimeSingleView() {
                     ))}
                 </div>
                 <div className="anime-add-to-list-container">
-                  <button className="anime-add-to-list-btn">
-                    Add to watch list
-                  </button>
+                  {animeInUserWatchList[anime.mal_id] ? (
+                    <button
+                      onClick={() => handleButtonClick("remove", anime.mal_id)}
+                      className="anime-remove-from-list-btn"
+                    >
+                      Remove from watch list
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleButtonClick("add", anime.mal_id)}
+                      className="anime-add-to-list-btn"
+                    >
+                      Add to watch list
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

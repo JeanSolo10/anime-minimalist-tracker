@@ -74,7 +74,8 @@
   text-align: center;
 }
 
-.anime-add-to-list-btn {
+.anime-add-to-list-btn,
+.anime-remove-from-list-btn {
   text-align: center;
   display: inline-block;
   padding: 0.5em;
@@ -88,4 +89,8 @@
   border: none;
   margin-right: 1.5rem;
   font-size: 1rem;
+}
+
+.anime-remove-from-list-btn {
+  background-color: #de3545;
 }

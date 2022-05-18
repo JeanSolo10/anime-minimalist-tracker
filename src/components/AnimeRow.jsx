@@ -6,6 +6,7 @@ import "../styles/AnimeRow.css";
 import {
   setCurrenSeasonAnimes,
   setAnimeSingleViewIndex,
+  setAnimeInUserWatchList,
 } from "../features/animes/animeSlice";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -13,7 +14,6 @@ export default function AnimeRow(props) {
   const { title, season } = props;
   //const [currentSeasonAnimes, setcurrentSeasonAnimes] = useState([]);
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   /* redux */
   const { currentSeasonAnimes } = useSelector((state) => state.animes);
@@ -38,6 +38,9 @@ export default function AnimeRow(props) {
         allData = [...allData, ...result.data.data];
         morePagesAvailable = hasNextPage;
       }
+      allData.forEach((anime) => {
+        dispatch(setAnimeInUserWatchList(anime.mal_id));
+      });
       dispatch(setCurrenSeasonAnimes(allData));
     } catch (error) {
       setError(error.message);
