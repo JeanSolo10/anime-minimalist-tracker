@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const decodeToken = require("../middleware");
 const dotenv = require("dotenv").config();
 const path = require("path");
 
@@ -10,8 +11,12 @@ app.use(cors());
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 
+/* Firebase Middleware */
+app.use(decodeToken);
+
 /* Endpoints */
 app.get("/api/v1", (req, res) => {
+  //const { user } = req;
   return res.status(200).json({ results: "HEROKU!" });
 });
 
