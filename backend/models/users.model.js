@@ -1,5 +1,7 @@
 const knex = require("../knex");
 const USERS_TABLE = "users";
+const STATUS_TABLE = "anime_watch_status";
+const RATING_TABLE = "ratings";
 
 module.exports = {
   getAll() {
@@ -13,6 +15,20 @@ module.exports = {
   },
   getById(id) {
     return knex.select().from(USERS_TABLE).where({ id: id }).first();
+  },
+  getRatingByUserAndAnimeId(uid, aid) {
+    return knex
+      .select()
+      .from(RATING_TABLE)
+      .where({ user_id: uid })
+      .andWhere({ anime_id: parseInt(aid) });
+  },
+  getStatusByUserAndAnimeId(uid, aid) {
+    return knex
+      .select()
+      .from(STATUS_TABLE)
+      .where({ user_id: uid })
+      .andWhere({ anime_id: parseInt(aid) });
   },
   async update(id, payload) {
     if (!(await this.getById(id))) {
