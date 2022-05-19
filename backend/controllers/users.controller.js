@@ -16,10 +16,10 @@ router.get("/", async (req, res) => {
 
 // @desc Get user by username
 // GET Request
-router.get("/:idOrName", async (req, res) => {
+router.get("/user/:username", async (req, res) => {
   try {
-    const arg = req.params.idOrName;
-    const user = isNaN(arg) ? await Users.getByUsername(arg) : undefined;
+    const arg = req.params.username;
+    const user = await Users.getByUsername(arg);
     if (user) {
       res.status(200).json({ results: user });
     } else {
@@ -32,13 +32,58 @@ router.get("/:idOrName", async (req, res) => {
   }
 });
 
+// @desc Get user by id
+// GET Request
+router.get("/:id", async (req, res) => {
+  try {
+    const arg = req.params.id;
+    const user = await Users.getById(arg);
+    if (user) {
+      res.status(200).json({ results: user });
+    } else {
+      res.status(404).json({
+        message: `User not found! Verify that id is valid`,
+      });
+    }
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // @desc Add new user
 // POST Request
+// add decodeToken middleware
 router.post("/", decodeToken, async (req, res) => {
   try {
     const userData = req.body;
     await Users.create(userData);
     res.status(201).end();
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// @desc Modify user
+// PATCH Request
+router.patch("/:id", decodeToken, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const payload = req.body;
+    await Users.update(id, payload);
+    res.status(204).end();
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// @desc Deletes user
+// DELETE Request
+// add decodeToken middleware
+router.delete("/:id", decodeToken, async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Users.delete(id);
+    res.status(204).end();
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
