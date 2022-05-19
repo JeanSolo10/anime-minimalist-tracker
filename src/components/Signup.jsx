@@ -31,7 +31,7 @@ export default function Signup() {
       let isUsernameTaken = false;
       try {
         const result = await axios.get(
-          `/api/v1/users/${usernameRef.current.value}`
+          `/api/v1/users/user/${usernameRef.current.value}`
         );
         if (result.data.results.length > 0) {
           isUsernameTaken = true;
