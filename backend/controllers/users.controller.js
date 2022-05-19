@@ -68,8 +68,6 @@ router.get("/:user_id/:anime_id/status", async (req, res) => {
   }
 });
 
-
-
 // @desc Get user by id
 // GET Request
 router.get("/:id", async (req, res) => {

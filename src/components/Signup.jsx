@@ -71,7 +71,6 @@ export default function Signup() {
       } catch (error) {
         setError(error.message);
       }
-
       navigate("/");
     } catch (error) {
       const errorMessage = handleFirebaseErrors(error.message);
