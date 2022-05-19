@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import { setUserName } from "../features/users/userSlice";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+axios.defaults.baseURL = "/";
 
 export default function Signin() {
   const emailRef = useRef();
@@ -10,6 +14,7 @@ export default function Signin() {
   const { signIn, user } = UserAuth();
   const navigate = useNavigate();
   let componentMounted = true;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const authToken = localStorage.getItem("Auth Token");
@@ -18,7 +23,7 @@ export default function Signin() {
     }
     return () => {
       let componentMounted = false;
-    }
+    };
   }, []);
 
   const handleSubmit = async (e) => {
@@ -32,6 +37,8 @@ export default function Signin() {
         passwordRef.current.value
       );
       localStorage.setItem("Auth Token", response._tokenResponse.idToken);
+      const username = await fetchUserName(response.user.uid);
+      dispatch(setUserName(username));
       navigate("/");
     } catch (error) {
       const errorMessage = handleFirebaseErrors(error.message);
@@ -39,6 +46,12 @@ export default function Signin() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const fetchUserName = async (uid) => {
+    const url = `/api/v1/users/${uid}`;
+    const response = await axios.get(url);
+    return response.data.results.username;
   };
 
   const handleFirebaseErrors = (message) => {

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   currentSeasonAnimes: [],
   selectedAnimeIndex: 0,
+  username: "",
 };
 
 export const animesSlice = createSlice({

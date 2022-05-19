@@ -1,7 +1,10 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import { setUserName } from "../features/users/userSlice";
+import { useDispatch } from "react-redux";
 import axios from "axios";
+axios.defaults.baseURL = "/";
 
 export default function Signup() {
   const emailRef = useRef();
@@ -13,6 +16,7 @@ export default function Signup() {
   const { createUser } = UserAuth();
   const navigate = useNavigate();
   let componentMounted = true;
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +48,8 @@ export default function Signup() {
         passwordRef.current.value
       );
       localStorage.setItem("Auth Token", response._tokenResponse.idToken);
-
+      const username = await fetchUserName(response.user.uid);
+      dispatch(setUserName(username));
       /* handle database call */
       const submittedEmail = response.user.email;
       const submittedUid = response.user.uid;
@@ -77,6 +82,12 @@ export default function Signup() {
         componentMounted = false;
       };
     }
+  };
+
+  const fetchUserName = async (uid) => {
+    const url = `/api/v1/users/${uid}`;
+    const response = await axios.get(url);
+    return response.data.results.username;
   };
 
   const handleFirebaseErrors = (message) => {
