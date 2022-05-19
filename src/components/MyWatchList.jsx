@@ -49,6 +49,7 @@ export default function MyWatchList() {
     const url = `/api/v1/status/${user.uid}/${aid}`;
     try {
       await axios.patch(url, { status: "completed" });
+      fetchWatchAnimeList();
     } catch (error) {
       setError(error.message);
     }
@@ -58,6 +59,7 @@ export default function MyWatchList() {
     const url = `/api/v1/status/${user.uid}/${aid}`;
     try {
       await axios.delete(url);
+      fetchWatchAnimeList();
     } catch (error) {
       setError(error.message);
     }
