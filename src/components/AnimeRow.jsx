@@ -25,23 +25,11 @@ export default function AnimeRow(props) {
 
   const fetchAnime = async () => {
     try {
-      let morePagesAvailable = true;
-      let currentPage = 0;
-      let allData = [];
-
-      while (morePagesAvailable) {
-        currentPage++;
-        const result = await axios.get(
-          `https://api.jikan.moe/v4/seasons/now?page=${currentPage}`
-        );
-        const hasNextPage = result.data.pagination.has_next_page;
-        allData = [...allData, ...result.data.data];
-        morePagesAvailable = hasNextPage;
-      }
-      allData.forEach((anime) => {
-        dispatch(setAnimeInUserWatchList(anime.mal_id));
+      const response = await axios.get("api/v1/animes");
+      response.data.results.forEach((anime) => {
+        dispatch(setAnimeInUserWatchList(anime.id));
       });
-      dispatch(setCurrenSeasonAnimes(allData));
+      dispatch(setCurrenSeasonAnimes(response.data.results));
     } catch (error) {
       setError(error.message);
     }
@@ -66,23 +54,23 @@ export default function AnimeRow(props) {
         </div>
         <div className="row__posters">
           {currentSeasonAnimes.slice(0, 20).map((anime, index) => (
-            <div anime={anime} key={anime.mal_id} className="anime-card">
+            <div anime={anime} key={index} className="anime-card">
               <Link
                 onClick={() => dispatch(setAnimeSingleViewIndex(index))}
-                to={`/anime/${anime.mal_id}/${anime.title
+                to={`/anime/${anime.id}/${anime.name
                   .toString()
                   .replaceAll(" ", "-")}`}
               >
                 <img
                   className="row__poster"
-                  src={anime.images.jpg.image_url}
+                  src={anime.image_url}
                   alt="anime"
                 />
               </Link>
               <p>
-                {anime.title.length > 30
-                  ? `${anime.title.substring(0, 28)}... `
-                  : anime.title}
+                {anime.name.length > 30
+                  ? `${anime.name.substring(0, 28)}... `
+                  : anime.name}
               </p>
             </div>
           ))}
