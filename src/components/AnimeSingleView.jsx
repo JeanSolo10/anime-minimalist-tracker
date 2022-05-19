@@ -7,19 +7,33 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import "../styles/AnimeSingleView.css";
 import { UserAuth } from "../context/AuthContext";
+axios.defaults.baseURL = "/";
 
 export default function AnimeSingleView() {
-  const [anime, setAnime] = useState([]);
+  const { currentSeasonAnimes, selectedAnimeIndex } = useSelector(
+    (state) => state.animes
+  );
+
   const [error, setError] = useState("");
+  const [isInWatchList, setIsInwatchList] = useState(false);
   const placeholderImage = require("../images/anime_placeholder.jpg");
+
   /* redux */
-  const { currentSeasonAnimes, selectedAnimeIndex, animeInUserWatchList } =
-    useSelector((state) => state.animes);
+  const [anime, setAnime] = useState(currentSeasonAnimes[selectedAnimeIndex]);
   const { user } = UserAuth();
 
   useEffect(() => {
-    setAnime(currentSeasonAnimes[selectedAnimeIndex]);
+    fetchIsInWatchList();
   }, []);
+
+  const fetchIsInWatchList = async () => {
+    const url = `api/v1/users/${user.uid}/${anime.id}/status`;
+    const response = await axios.get(url);
+    if (response.data.results.length > 0) {
+      return setIsInwatchList(true);
+    }
+    return setIsInwatchList(false);
+  };
 
   const dispatch = useDispatch();
 
@@ -28,7 +42,7 @@ export default function AnimeSingleView() {
     if (!authToken && !user) {
       return setError("You must be logged in to save anime!");
     }
-    dispatch(updateAnimeInUserWatchList(id));
+    return;
   };
 
   return (
@@ -71,7 +85,7 @@ export default function AnimeSingleView() {
                     ))}
                 </div>
                 <div className="anime-add-to-list-container">
-                  {animeInUserWatchList[anime.id] ? (
+                  {isInWatchList ? (
                     <button
                       onClick={() => handleButtonClick("remove", anime.id)}
                       className="anime-remove-from-list-btn"
