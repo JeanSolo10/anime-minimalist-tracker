@@ -29,23 +29,19 @@ export default function AnimeSingleView() {
       {anime && (
         <div className="anime-wrapper">
           <div className="anime-title">
-            <h2>{anime.title}</h2>
+            <h2>{anime.name}</h2>
           </div>
           <div className="anime-body">
             <div className="anime-main-body">
               <div className="anime-image-container">
                 <img
                   className="anime-row__poster"
-                  src={
-                    anime && anime.images
-                      ? anime.images.jpg.image_url
-                      : placeholderImage
-                  }
+                  src={anime ? anime.image_url : placeholderImage}
                   alt="anime"
                 />
               </div>
               <div className="anime-info">
-                <div className="anime-score">
+                {/* <div className="anime-score">
                   <p>
                     <span className="anime-info-sub-title">SCORE: </span>
                     {anime.score}
@@ -56,28 +52,27 @@ export default function AnimeSingleView() {
                     <span className="anime-info-sub-title">EPISODES: </span>
                     {anime.episodes}
                   </p>
-                </div>
-                <div className="anime-genres">
+                </div> */}
+                {/* <div className="anime-genres">
                   <span className="anime-info-sub-title">GENRES: </span>
                   {anime &&
-                    anime.genres &&
                     anime.genres.map((genre, index) => (
                       <span className="anime-genre" key={index}>
                         {(index ? "," : "") + " " + genre.name}
                       </span>
                     ))}
-                </div>
+                </div> */}
                 <div className="anime-add-to-list-container">
-                  {animeInUserWatchList[anime.mal_id] ? (
+                  {animeInUserWatchList[anime.id] ? (
                     <button
-                      onClick={() => handleButtonClick("remove", anime.mal_id)}
+                      onClick={() => handleButtonClick("remove", anime.id)}
                       className="anime-remove-from-list-btn"
                     >
                       Remove from watch list
                     </button>
                   ) : (
                     <button
-                      onClick={() => handleButtonClick("add", anime.mal_id)}
+                      onClick={() => handleButtonClick("add", anime.id)}
                       className="anime-add-to-list-btn"
                     >
                       Add to watch list
@@ -93,9 +88,7 @@ export default function AnimeSingleView() {
             </div>
             <div className="anime-trailer">
               <iframe
-                src={
-                  anime && anime.trailer ? anime.trailer.embed_url : undefined
-                }
+                src={anime ? anime.embed_url : undefined}
                 title="anime trailer"
                 allowFullScreen={true}
               ></iframe>
