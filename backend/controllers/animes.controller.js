@@ -37,7 +37,7 @@ router.get("/:idOrName", async (req, res) => {
 // @desc Add new anime
 // POST Request
 // TODO: Only allow admin to modify anime
-router.post("/", decodeToken, async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const animeData = req.body;
     const anime = await Animes.create(animeData);
@@ -52,7 +52,7 @@ router.post("/", decodeToken, async (req, res) => {
 // @desc Update anime
 // PATCH Request
 // TODO: Only allow admin to modify anime
-router.patch("/:id", decodeToken, async (req, res) => {
+router.patch("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const payload = req.body;
@@ -66,7 +66,7 @@ router.patch("/:id", decodeToken, async (req, res) => {
 // @desc Delete anime
 // DEL Request
 // TODO: Only allow admin to modify anime
-router.delete("/:id", decodeToken, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     await Animes.delete(id);

@@ -53,7 +53,7 @@ router.get("/:id", async (req, res) => {
 // @desc Add new user
 // POST Request
 // add decodeToken middleware
-router.post("/", decodeToken, async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const userData = req.body;
     await Users.create(userData);
@@ -65,7 +65,7 @@ router.post("/", decodeToken, async (req, res) => {
 
 // @desc Modify user
 // PATCH Request
-router.patch("/:id", decodeToken, async (req, res) => {
+router.patch("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const payload = req.body;
@@ -79,7 +79,7 @@ router.patch("/:id", decodeToken, async (req, res) => {
 // @desc Deletes user
 // DELETE Request
 // add decodeToken middleware
-router.delete("/:id", decodeToken, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     await Users.delete(id);
