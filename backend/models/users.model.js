@@ -14,7 +14,7 @@ module.exports = {
     return knex.select().from(USERS_TABLE).where({ username });
   },
   getById(id) {
-    return knex.select().from(USERS_TABLE).where({ id: id }).first();
+    return knex.select().from(USERS_TABLE).where({ id: id });
   },
   getRatingByUserAndAnimeId(uid, aid) {
     return knex
