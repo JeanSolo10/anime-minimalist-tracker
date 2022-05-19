@@ -51,7 +51,7 @@ export default function AnimeSingleView() {
                 <div className="anime-score">
                   <p>
                     <span className="anime-info-sub-title">SCORE: </span>
-                    {anime.score}
+                    {`${anime.score} / 10`}
                   </p>
                 </div>
                 <div className="anime-episodes">

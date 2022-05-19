@@ -12,7 +12,11 @@ const requiredParams = ["id", "name"];
 
 module.exports = {
   getAll() {
-    return knex.select().from(ANIME_TABLE);
+    return knex
+      .select()
+      .from(ANIME_TABLE)
+      .orderByRaw("score desc NULLS LAST")
+      .orderBy("id", "asc");
   },
   getById(id) {
     return knex.select().from(ANIME_TABLE).where({ id: id });
