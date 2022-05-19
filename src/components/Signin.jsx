@@ -51,7 +51,7 @@ export default function Signin() {
   const fetchUserName = async (uid) => {
     const url = `/api/v1/users/${uid}`;
     const response = await axios.get(url);
-    return response.data.results.username;
+    return response.data.results[0].username;
   };
 
   const handleFirebaseErrors = (message) => {
