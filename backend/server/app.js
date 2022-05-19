@@ -16,7 +16,10 @@ app.use(express.static(path.resolve(__dirname, "..", "build")));
 
 /* controllers */
 const usersController = require("../controllers/users.controller");
+const animesController = require("../controllers/animes.controller");
+
 app.use("/api/v1/users", usersController);
+app.use("/api/v1/animes", animesController);
 
 /* Endpoints */
 app.get("/api/v1", (req, res) => {
