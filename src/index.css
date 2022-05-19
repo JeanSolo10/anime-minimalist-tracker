@@ -10,6 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #d3d8e2;
 }
 
 code {
@@ -135,7 +136,6 @@ code {
   justify-content: space-between;
   padding: 1rem;
   color: #3a4654;
-  margin-bottom: 1rem;
 }
 
 .nav-login-link,
@@ -158,6 +158,63 @@ code {
 
 /* Dashboard */
 .dashboard-wrapper {
-  background-color: rgb(237, 241, 245);
   min-height: 100vh;
+}
+
+/* Overlay Modal */
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  transition: all ease 4s;
+}
+
+.modalContainer {
+  min-width: 250px;
+  width: 50%;
+  min-height: 200px;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 18px 0px rgb(0 0 0 / 75%);
+  border-radius: 5px;
+  flex-wrap: wrap;
+}
+
+.modal-button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  flex: 1 1;
+  padding: 1rem;
+  align-items: center;
+}
+.close-btn-container {
+  width: 100%;
+}
+
+.modal-close-btn {
+  position: fixed;
+  top: 8px;
+  right: 8px;
+  color: #4c5c6a;
+}
+
+.modal-button-container a {
+  justify-self: center;
+  color: #4c5c6a;
+  text-decoration: none;
+  align-self: baseline;
+}
+
+.logout-icon {
+  justify-self: center;
+  color: #4c5c6a;
+  text-decoration: none;
+  align-self: baseline;
 }

@@ -15,16 +15,16 @@
 
 .cover {
   background: #16a916;
-  z-index: 2;
   border-radius: 6px;
   padding-bottom: 2px;
+  height: 100%;
 }
 
 .completed-cover {
   background: #141462;
-  z-index: 2;
   border-radius: 6px;
   padding-bottom: 2px;
+  height: 100%;
 }
 
 .cover-image {

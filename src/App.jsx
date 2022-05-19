@@ -20,7 +20,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />}></Route>
           <Route path="/seasons/:season" element={<AllAnimeBySeason />}></Route>
           <Route path="/anime/:id/:name" element={<AnimeSingleView />}></Route>
-          <Route path="/:user/animewatchlist" element={<MyWatchList />}></Route>
+          <Route path="/:user/animeWatchList" element={<MyWatchList />}></Route>
         </Routes>
       </AuthContextProvider>
     </>
