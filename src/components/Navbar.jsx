@@ -3,13 +3,20 @@ import { UserAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { removeUserName } from "../features/users/userSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { GiHamburgerMenu } from "react-icons/gi";
+import Modal from "./Modal";
 
 export default function Navbar(props) {
+  /* Redux */
   const { username } = useSelector((state) => state.users);
   const { user, logout } = UserAuth();
   const { setError } = props;
+  /* State */
+  const [openModal, setOpenModal] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const handleLogout = async () => {
     setError("");
     try {
@@ -26,29 +33,15 @@ export default function Navbar(props) {
     <>
       <nav className="nav-main-grid">
         <p className="nav-title">Anime Tracker</p>
-        {username && (
-          <div className="nav-my-list-link">
-            <Link
-              className="nav-my-list-link-text"
-              to={`/${username}/animewatchlist`}
-            >
-              My List
-            </Link>
-          </div>
-        )}
-        {!user && (
-          <div className="nav-login-link">
-            <Link className="nav-login-link-text" to="/login">
-              Login
-            </Link>
-          </div>
-        )}
-        {user && (
-          <div onClick={handleLogout} className="nav-logout-link">
-            Logout
-          </div>
-        )}
+        <div onClick={() => setOpenModal(true)} className="nav-button">
+          <GiHamburgerMenu size="1.4em" />
+        </div>
       </nav>
+      <Modal
+        handleLogout={handleLogout}
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+      />
     </>
   );
 }

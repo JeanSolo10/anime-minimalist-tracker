@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "../styles/AllAnimeBySeason.css";
 import { setAnimeSingleViewIndex } from "../features/animes/animeSlice";
+import Navbar from "./Navbar";
 
 export default function AllAnimeBySeason(props) {
+  const [error, setError] = useState("");
   const { currentSeasonAnimes } = useSelector((state) => state.animes);
   const dispatch = useDispatch();
   return (
     <>
       <div className="all-anime-bs-row">
+        <Navbar setError={setError} />
+        {error && <div className="error-message">{error}</div>}
         <div className="all-anime-bs-header">
           <h2>Spring 2022</h2>
         </div>

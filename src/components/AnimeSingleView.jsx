@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import "../styles/AnimeSingleView.css";
 import { UserAuth } from "../context/AuthContext";
+import Navbar from "./Navbar";
 axios.defaults.baseURL = "/";
 
 export default function AnimeSingleView() {
@@ -51,6 +52,8 @@ export default function AnimeSingleView() {
 
   return (
     <>
+      <Navbar setError={setError} />
+      {error && <div className="error-message">{error}</div>}
       {anime && (
         <div className="anime-wrapper">
           <div className="anime-title">
