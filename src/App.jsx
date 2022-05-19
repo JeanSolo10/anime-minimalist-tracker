@@ -8,7 +8,6 @@ import Dashboard from "./components/Dashboard";
 import AllAnimeBySeason from "./components/AllAnimeBySeason";
 import AnimeSingleView from "./components/AnimeSingleView";
 import MyWatchList from "./components/MyWatchList";
-import axios from "axios";
 
 function App() {
   return (

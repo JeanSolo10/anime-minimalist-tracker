@@ -1,34 +1,52 @@
 import React, { useState, useEffect } from "react";
-import {
-  setCurrenSeasonAnimes,
-  updateAnimeInUserWatchList,
-} from "../features/animes/animeSlice";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import "../styles/AnimeSingleView.css";
 import { UserAuth } from "../context/AuthContext";
+axios.defaults.baseURL = "/";
 
 export default function AnimeSingleView() {
-  const [anime, setAnime] = useState([]);
+  const { currentSeasonAnimes, selectedAnimeIndex } = useSelector(
+    (state) => state.animes
+  );
+
   const [error, setError] = useState("");
+  const [isInWatchList, setIsInwatchList] = useState("");
   const placeholderImage = require("../images/anime_placeholder.jpg");
+
   /* redux */
-  const { currentSeasonAnimes, selectedAnimeIndex, animeInUserWatchList } =
-    useSelector((state) => state.animes);
+  const [anime, setAnime] = useState(currentSeasonAnimes[selectedAnimeIndex]);
   const { user } = UserAuth();
 
   useEffect(() => {
-    setAnime(currentSeasonAnimes[selectedAnimeIndex]);
+    if (user) {
+      fetchIsInWatchList();
+    }
   }, []);
 
-  const dispatch = useDispatch();
+  const fetchIsInWatchList = async () => {
+    const url = `api/v1/users/${user.uid}/${anime.id}/status`;
+    const response = await axios.get(url);
+    if (response.data.results.length > 0) {
+      const animeStatus = response.data.results[0].status;
+      return setIsInwatchList(animeStatus);
+    }
+    return setIsInwatchList("");
+  };
 
-  const handleButtonClick = (action, id) => {
+  const handleButtonClick = async (aid) => {
     const authToken = localStorage.getItem("Auth Token");
     if (!authToken && !user) {
       return setError("You must be logged in to save anime!");
     }
-    dispatch(updateAnimeInUserWatchList(id));
+    const url = `/api/v1/status`;
+    await axios.post(url, {
+      user_id: user.uid,
+      anime_id: aid,
+      status: "watching",
+    });
+    setIsInwatchList("watching");
+    return;
   };
 
   return (
@@ -71,16 +89,25 @@ export default function AnimeSingleView() {
                     ))}
                 </div>
                 <div className="anime-add-to-list-container">
-                  {animeInUserWatchList[anime.id] ? (
+                  {isInWatchList === "watching" ? (
                     <button
-                      onClick={() => handleButtonClick("remove", anime.id)}
-                      className="anime-remove-from-list-btn"
+                      disabled={true}
+                      className="anime-watching-status-btn"
                     >
-                      Remove from list
+                      {isInWatchList.charAt(0).toUpperCase() +
+                        isInWatchList.slice(1)}
+                    </button>
+                  ) : isInWatchList === "completed" ? (
+                    <button
+                      disabled={true}
+                      className="anime-completed-status-btn"
+                    >
+                      {isInWatchList.charAt(0).toUpperCase() +
+                        isInWatchList.slice(1)}
                     </button>
                   ) : (
                     <button
-                      onClick={() => handleButtonClick("add", anime.id)}
+                      onClick={() => handleButtonClick(anime.id)}
                       className="anime-add-to-list-btn"
                     >
                       Add to watch list

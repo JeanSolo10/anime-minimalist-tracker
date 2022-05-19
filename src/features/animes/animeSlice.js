@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   currentSeasonAnimes: [],
   selectedAnimeIndex: 0,
-  animeInUserWatchList: {},
+  username: "",
 };
 
 export const animesSlice = createSlice({
@@ -16,22 +16,11 @@ export const animesSlice = createSlice({
     setAnimeSingleViewIndex: (state, action) => {
       state.selectedAnimeIndex = action.payload;
     },
-    setAnimeInUserWatchList: (state, action) => {
-      state.animeInUserWatchList[action.payload] = false;
-    },
-    updateAnimeInUserWatchList: (state, action) => {
-      state.animeInUserWatchList[action.payload] =
-        !state.animeInUserWatchList[action.payload];
-    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const {
-  setCurrenSeasonAnimes,
-  setAnimeSingleViewIndex,
-  setAnimeInUserWatchList,
-  updateAnimeInUserWatchList,
-} = animesSlice.actions;
+export const { setCurrenSeasonAnimes, setAnimeSingleViewIndex } =
+  animesSlice.actions;
 
 export default animesSlice.reducer;

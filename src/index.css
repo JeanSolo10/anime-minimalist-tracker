@@ -139,14 +139,16 @@ code {
 }
 
 .nav-login-link,
-.nav-logout-link {
+.nav-logout-link,
+.nav-my-list-link {
   cursor: pointer;
   font-weight: 700;
   border-radius: 6px;
   border: none;
 }
 
-.nav-login-link-text {
+.nav-login-link-text,
+.nav-my-list-link-text {
   text-decoration: none;
 }
 

@@ -6,7 +6,6 @@ import "../styles/AnimeRow.css";
 import {
   setCurrenSeasonAnimes,
   setAnimeSingleViewIndex,
-  setAnimeInUserWatchList,
 } from "../features/animes/animeSlice";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -26,9 +25,6 @@ export default function AnimeRow(props) {
   const fetchAnime = async () => {
     try {
       const response = await axios.get("api/v1/animes");
-      response.data.results.forEach((anime) => {
-        dispatch(setAnimeInUserWatchList(anime.id));
-      });
       dispatch(setCurrenSeasonAnimes(response.data.results));
     } catch (error) {
       setError(error.message);
