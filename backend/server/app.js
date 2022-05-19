@@ -17,15 +17,11 @@ app.use(express.static(path.resolve(__dirname, "..", "build")));
 /* controllers */
 const usersController = require("../controllers/users.controller");
 const animesController = require("../controllers/animes.controller");
+const ratingsController = require("../controllers/ratings.controller");
 
 app.use("/api/v1/users", usersController);
 app.use("/api/v1/animes", animesController);
-
-/* Endpoints */
-app.get("/api/v1", (req, res) => {
-  //const { user } = req;
-  return res.status(200).json({ results: "HEROKU!" });
-});
+app.use("/api/v1/ratings", ratingsController);
 
 /* Heroku deployment configuration */
 if (process.env.NODE_ENV === "production") {
