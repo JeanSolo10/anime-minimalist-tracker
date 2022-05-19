@@ -23,7 +23,9 @@ export default function AnimeSingleView() {
   const { user } = UserAuth();
 
   useEffect(() => {
-    fetchIsInWatchList();
+    if (user) {
+      fetchIsInWatchList();
+    }
   }, []);
 
   const fetchIsInWatchList = async () => {
