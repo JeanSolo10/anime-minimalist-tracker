@@ -10,8 +10,6 @@ export default function Navbar(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log("user", user);
-
   const handleLogout = async () => {
     setError("");
     try {
