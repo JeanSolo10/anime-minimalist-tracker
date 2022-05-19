@@ -18,10 +18,12 @@ app.use(express.static(path.resolve(__dirname, "..", "build")));
 const usersController = require("../controllers/users.controller");
 const animesController = require("../controllers/animes.controller");
 const ratingsController = require("../controllers/ratings.controller");
+const statusController = require("../controllers/status.controller");
 
 app.use("/api/v1/users", usersController);
 app.use("/api/v1/animes", animesController);
 app.use("/api/v1/ratings", ratingsController);
+app.use("/api/v1/status", statusController);
 
 /* Heroku deployment configuration */
 if (process.env.NODE_ENV === "production") {
