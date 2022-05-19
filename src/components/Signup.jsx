@@ -48,8 +48,7 @@ export default function Signup() {
         passwordRef.current.value
       );
       localStorage.setItem("Auth Token", response._tokenResponse.idToken);
-      const username = await fetchUserName(response.user.uid);
-      dispatch(setUserName(username));
+      dispatch(setUserName(usernameRef.current.value));
       /* handle database call */
       const submittedEmail = response.user.email;
       const submittedUid = response.user.uid;
@@ -81,12 +80,6 @@ export default function Signup() {
         componentMounted = false;
       };
     }
-  };
-
-  const fetchUserName = async (uid) => {
-    const url = `/api/v1/users/${uid}`;
-    const response = await axios.get(url);
-    return response.data.results.username;
   };
 
   const handleFirebaseErrors = (message) => {
