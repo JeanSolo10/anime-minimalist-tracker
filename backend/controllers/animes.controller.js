@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Animes = require("../models/animes.model");
+const decodeToken = require("../middleware");
 
 // @desc Get all anime
 // GET Request
@@ -35,8 +36,8 @@ router.get("/:idOrName", async (req, res) => {
 
 // @desc Add new anime
 // POST Request
-// add bearerToken
-router.post("/", async (req, res) => {
+// TODO: Only allow admin to modify anime
+router.post("/", decodeToken, async (req, res) => {
   try {
     const animeData = req.body;
     const anime = await Animes.create(animeData);
@@ -50,7 +51,8 @@ router.post("/", async (req, res) => {
 
 // @desc Update anime
 // PATCH Request
-router.patch("/:id", async (req, res) => {
+// TODO: Only allow admin to modify anime
+router.patch("/:id", decodeToken, async (req, res) => {
   try {
     const { id } = req.params;
     const payload = req.body;
@@ -63,7 +65,8 @@ router.patch("/:id", async (req, res) => {
 
 // @desc Delete anime
 // DEL Request
-router.delete("/:id", async (req, res) => {
+// TODO: Only allow admin to modify anime
+router.delete("/:id", decodeToken, async (req, res) => {
   try {
     const { id } = req.params;
     await Animes.delete(id);
