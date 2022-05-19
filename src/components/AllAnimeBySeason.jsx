@@ -15,20 +15,20 @@ export default function AllAnimeBySeason(props) {
         </div>
         <div className="all-anime-bs-row__posters">
           {currentSeasonAnimes.map((anime, index) => (
-            <div anime={anime} key={anime.mal_id} className="all-anime-bs-card">
+            <div anime={anime} key={index} className="all-anime-bs-card">
               <Link
                 onClick={() => dispatch(setAnimeSingleViewIndex(index))}
-                to={`/anime/${anime.mal_id}/${anime.title
+                to={`/anime/${anime.id}/${anime.name
                   .toString()
                   .replaceAll(" ", "-")}`}
               >
                 <img
                   className="all-anime-bs-row__poster"
-                  src={anime.images.jpg.image_url}
+                  src={anime.image_url}
                   alt="anime"
                 />
               </Link>
-              <p>{anime.title}</p>
+              <p>{anime.name}</p>
             </div>
           ))}
         </div>
