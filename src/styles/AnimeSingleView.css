@@ -75,7 +75,8 @@
 }
 
 .anime-add-to-list-btn,
-.anime-remove-from-list-btn {
+.anime-watching-status-btn,
+.anime-completed-status-btn {
   text-align: center;
   display: inline-block;
   padding: 0.5em;
@@ -91,6 +92,7 @@
   font-size: 1rem;
 }
 
-.anime-remove-from-list-btn {
-  background-color: #de3545;
+.anime-watching-status-btn {
+  background-color: #2aa846;
+  border-color: #1e7e34;
 }
