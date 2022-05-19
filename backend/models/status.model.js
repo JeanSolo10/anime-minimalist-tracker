@@ -9,7 +9,7 @@ module.exports = {
     return knex.insert(status).into(STATUS_TABLE);
   },
   getByUserId(id) {
-    return knex.select().from(STATUS_TABLE).where({ user_id: id }).first();
+    return knex.select().from(STATUS_TABLE).where({ user_id: id });
   },
   async update(uid, aid, payload) {
     const { status } = payload;
