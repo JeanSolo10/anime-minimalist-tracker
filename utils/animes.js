@@ -24,6 +24,10 @@ const AnimeDataFetcher = {
           genres: this.fetchGenres(anime.genres),
           image_url: anime.images.jpg.image_url,
           embed_url: anime.trailer.embed_url,
+          score: anime.score,
+          episodes: anime.episodes,
+          season: anime.season,
+          year: anime.year,
         };
       });
       return allAnimeData;
@@ -32,9 +36,10 @@ const AnimeDataFetcher = {
     }
   },
   fetchGenres(genres) {
-    const result = {};
+    //console.log("INSIDE GENRES");
+    const result = { genreTypes: [] };
     for (let i = 0; i < genres.length; i++) {
-      result[genres[0].mal_id] = genres[i].name;
+      result.genreType = [...result.genreTypes, genres[i].name];
     }
     return result;
   },
