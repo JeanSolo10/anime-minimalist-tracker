@@ -39,7 +39,7 @@ const AnimeDataFetcher = {
     //console.log("INSIDE GENRES");
     const result = { genreTypes: [] };
     for (let i = 0; i < genres.length; i++) {
-      result.genreType = [...result.genreTypes, genres[i].name];
+      result.genreTypes = [...result.genreTypes, genres[i].name];
     }
     return result;
   },
