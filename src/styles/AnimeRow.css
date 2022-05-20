@@ -8,8 +8,10 @@
   border-radius: 4px;
 }
 
-.row__poster:hover {
-  transform: scale(1.08);
+@media only screen and (min-width: 768px) {
+  .row__poster:hover {
+    transform: scale(1.08);
+  }
 }
 
 .row__posters {
@@ -47,4 +49,5 @@
 
 .anime-header-view-all-link {
   text-decoration: none;
+  color: #3f4750;
 }

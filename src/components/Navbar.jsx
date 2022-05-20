@@ -33,7 +33,7 @@ export default function Navbar(props) {
       <nav className="nav-main-grid">
         <p className="nav-title">Anime Tracker</p>
         <div onClick={() => setOpenModal(true)} className="nav-button">
-          <GiHamburgerMenu size="1.4em" />
+          <GiHamburgerMenu size="1.7em" />
         </div>
       </nav>
       <Modal
