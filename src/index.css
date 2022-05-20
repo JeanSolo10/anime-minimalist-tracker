@@ -205,6 +205,7 @@ code {
   flex: 1 1;
   padding: 1rem;
   align-items: center;
+  margin-top: -12px;
 }
 .close-btn-container {
   width: 100%;
@@ -242,4 +243,28 @@ code {
 .signup-icon {
   color: #4c5c6a;
   font-weight: 700;
+}
+
+/* USERS COMPONENT */
+
+.users-title h2 {
+  padding: 0.6rem;
+  color: #3a4654;
+}
+
+.users-main-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.users-main-body a {
+  text-decoration: none;
+  color: #4c5c6a;
+  font-weight: 600;
+}
+
+.user-poster {
+  text-align: center;
 }

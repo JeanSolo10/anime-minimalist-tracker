@@ -15,11 +15,11 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const { createUser } = UserAuth();
   const navigate = useNavigate();
-  let componentMounted = true;
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let componentMounted = true;
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError(`Passwords do not match`);

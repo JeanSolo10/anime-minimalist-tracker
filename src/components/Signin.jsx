@@ -13,16 +13,16 @@ export default function Signin() {
   const [loading, setLoading] = useState(false);
   const { signIn, user } = UserAuth();
   const navigate = useNavigate();
-  let componentMounted = true;
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
+    let componentMounted = true;
     const authToken = localStorage.getItem("Auth Token");
     if (authToken && user) {
       navigate("/");
     }
     return () => {
-      let componentMounted = false;
+      componentMounted = false;
     };
   }, []);
 

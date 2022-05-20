@@ -9,6 +9,7 @@ import AllAnimeBySeason from "./components/AllAnimeBySeason";
 import AnimeSingleView from "./components/AnimeSingleView";
 import MyWatchList from "./components/MyWatchList";
 import Users from "./components/Users";
+import UserAnimeList from "./components/UserAnimeList";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/anime/:id/:name" element={<AnimeSingleView />}></Route>
           <Route path="/animewatchlist" element={<MyWatchList />}></Route>
           <Route path="/users" element={<Users />}></Route>
+          <Route path="/users/:username" element={<UserAnimeList />}></Route>
         </Routes>
       </AuthContextProvider>
     </>
