@@ -2,8 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   currentSeasonAnimes: [],
+  nextSeasonAnimes: [],
   selectedAnimeIndex: 0,
   username: "",
+  seasonSelected: [],
 };
 
 export const animesSlice = createSlice({
@@ -16,11 +18,26 @@ export const animesSlice = createSlice({
     setAnimeSingleViewIndex: (state, action) => {
       state.selectedAnimeIndex = action.payload;
     },
+    setNextSeasonAnimes: (state, action) => {
+      state.nextSeasonAnimes = action.payload;
+    },
+    setSelectedSeason: (state, action) => {
+      if (action.payload === "Spring") {
+        state.seasonSelected = state.currentSeasonAnimes;
+      }
+      if (action.payload === "Summer") {
+        state.seasonSelected = state.nextSeasonAnimes;
+      }
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setCurrenSeasonAnimes, setAnimeSingleViewIndex } =
-  animesSlice.actions;
+export const {
+  setCurrenSeasonAnimes,
+  setAnimeSingleViewIndex,
+  setNextSeasonAnimes,
+  setSelectedSeason,
+} = animesSlice.actions;
 
 export default animesSlice.reducer;

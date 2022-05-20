@@ -21,6 +21,14 @@ module.exports = {
   getById(id) {
     return knex.select().from(ANIME_TABLE).where({ id: id });
   },
+  getByseason(season) {
+    return knex
+      .select()
+      .from(ANIME_TABLE)
+      .where({ season: season })
+      .orderByRaw("score desc NULLS LAST")
+      .orderBy("id", "asc");
+  },
   getByName(name) {
     return knex
       .select()

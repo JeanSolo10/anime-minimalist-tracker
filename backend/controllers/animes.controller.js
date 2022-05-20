@@ -14,6 +14,18 @@ router.get("/", async (req, res) => {
   }
 });
 
+// @desc Get all anime by season
+// GET Request
+router.get("/season/:season", async (req, res) => {
+  try {
+    const arg = req.params.season;
+    const animes = await Animes.getByseason(arg.toLowerCase());
+    res.status(200).json({ results: animes });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // @desc Get unique anime
 // GET Request
 router.get("/:idOrName", async (req, res) => {
