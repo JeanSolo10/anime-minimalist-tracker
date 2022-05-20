@@ -15,8 +15,6 @@ export default function Modal({ open, onClose, handleLogout }) {
     return null;
   }
 
-  console.log("USER!!!!!!!", username);
-
   return (
     <>
       <div onClick={onClose} className="overlay">
