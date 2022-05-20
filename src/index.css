@@ -140,11 +140,21 @@ code {
 
 .nav-login-link,
 .nav-logout-link,
-.nav-my-list-link {
+.nav-my-list-link,
+.nav-users-link {
   cursor: pointer;
   font-weight: 700;
   border-radius: 6px;
   border: none;
+}
+.nav-my-list-link-text {
+  color: #4c5c6a;
+  font-weight: 700;
+}
+
+.nav-logout-link {
+  justify-self: center;
+  color: #4c5c6a;
 }
 
 .nav-login-link-text,
@@ -219,4 +229,17 @@ code {
   color: #4c5c6a;
   text-decoration: none;
   align-self: baseline;
+}
+
+.nav-users-link {
+  font-weight: 700;
+}
+
+.watch-list-wrapper {
+  text-align: center;
+}
+
+.signup-icon {
+  color: #4c5c6a;
+  font-weight: 700;
 }
