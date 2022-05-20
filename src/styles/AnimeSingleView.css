@@ -63,7 +63,7 @@
 .anime-trailer iframe {
   border-radius: 10px;
   overflow: hidden;
-  width: 90%;
+  width: 100%;
   border: 0;
   height: 200px;
 }
