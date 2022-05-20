@@ -7,10 +7,9 @@ import Navbar from "./Navbar";
 axios.defaults.baseURL = "/";
 
 export default function AnimeSingleView() {
-  const {
-    selectedAnimeIndex,
-    seasonSelected,
-  } = useSelector((state) => state.animes);
+  const { selectedAnimeIndex, seasonSelected } = useSelector(
+    (state) => state.animes
+  );
 
   const [error, setError] = useState("");
   const [isInWatchList, setIsInwatchList] = useState("");
@@ -24,7 +23,7 @@ export default function AnimeSingleView() {
     if (user) {
       fetchIsInWatchList();
     }
-  }, [user]);
+  }, [user, selectedAnimeIndex]);
 
   const fetchIsInWatchList = async () => {
     const url = `api/v1/users/${user.uid}/${anime.id}/status`;

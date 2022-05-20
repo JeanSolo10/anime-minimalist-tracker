@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { UserAuth } from "../context/AuthContext";
 import "../styles/MyWatchList.css";
+import {
+  setAnimeSingleViewIndex,
+  setSelectedSeason,
+} from "../features/animes/animeSlice";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 axios.defaults.baseURL = "/";
 
@@ -12,6 +17,8 @@ export default function MyWatchList() {
   const [error, setError] = useState("");
   const [completedList, setCompletedList] = useState([]);
   const { user } = UserAuth();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const authToken = localStorage.getItem("Auth Token");
@@ -24,7 +31,7 @@ export default function MyWatchList() {
     const url = `/api/v1/status/${user.uid}`;
     const response = await axios.get(url);
     const allAnimeData = await Promise.all(
-      response.data.results.map(async (data) => {
+      response.data.results.map(async (data, index) => {
         const url = `/api/v1/animes/${data.anime_id}`;
         const response = await axios.get(url);
         const anime = response.data.results[0];
@@ -33,6 +40,8 @@ export default function MyWatchList() {
           name: anime.name,
           image_url: anime.image_url,
           status: data.status,
+          index: index,
+          season: anime.season,
         };
       })
     );
@@ -66,6 +75,22 @@ export default function MyWatchList() {
     }
   };
 
+  const handleAnimeTitleClick = async (id, name, season) => {
+    const url = `/api/v1/animes/season/${season}`;
+    const response = await axios.get(url);
+    let index = 0;
+    const data = response.data.results;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].id === id) {
+        index = i;
+        break;
+      }
+    }
+    dispatch(setAnimeSingleViewIndex(index));
+    dispatch(setSelectedSeason(season));
+    navigate(`/anime/${id}/${name.toString().replaceAll(" ", "-")}`);
+  };
+
   return (
     <>
       <div className="watch-list-wrapper">
@@ -88,13 +113,17 @@ export default function MyWatchList() {
                 </div>
                 <div className="row-links-btns">
                   <div className="title">
-                    <a
-                      href={`/anime/${anime.id}/${anime.name
-                        .toString()
-                        .replaceAll(" ", "-")}`}
+                    <p
+                      onClick={() =>
+                        handleAnimeTitleClick(
+                          anime.id,
+                          anime.name,
+                          anime.season
+                        )
+                      }
                     >
                       {anime.name}
-                    </a>
+                    </p>
                   </div>
                   <div className="edit-btns">
                     <button
@@ -129,13 +158,17 @@ export default function MyWatchList() {
                 </div>
                 <div className="row-links-btns">
                   <div className="title">
-                    <a
-                      href={`/anime/${anime.id}/${anime.name
-                        .toString()
-                        .replaceAll(" ", "-")}`}
+                    <p
+                      onClick={() =>
+                        handleAnimeTitleClick(
+                          anime.id,
+                          anime.name,
+                          anime.season
+                        )
+                      }
                     >
                       {anime.name}
-                    </a>
+                    </p>
                   </div>
                   <div className="edit-btns">
                     <button

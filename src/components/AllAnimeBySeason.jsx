@@ -10,6 +10,7 @@ export default function AllAnimeBySeason(props) {
   const [year, setYear] = useState(new Date().getFullYear());
   const { seasonSelected } = useSelector((state) => state.animes);
   const [season, setSeason] = useState();
+  const dispatch = useDispatch();
   useEffect(() => {
     handleStateTitle();
   }, [season]);
@@ -19,7 +20,6 @@ export default function AllAnimeBySeason(props) {
     setSeason(seasonForTitle);
   };
 
-  const dispatch = useDispatch();
   return (
     <>
       <div className="all-anime-bs-row">

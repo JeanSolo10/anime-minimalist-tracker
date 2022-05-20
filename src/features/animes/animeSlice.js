@@ -22,10 +22,10 @@ export const animesSlice = createSlice({
       state.nextSeasonAnimes = action.payload;
     },
     setSelectedSeason: (state, action) => {
-      if (action.payload === "Spring") {
+      if (action.payload.toLowerCase() === "spring") {
         state.seasonSelected = state.currentSeasonAnimes;
       }
-      if (action.payload === "Summer") {
+      if (action.payload.toLowerCase() === "summer") {
         state.seasonSelected = state.nextSeasonAnimes;
       }
     },
