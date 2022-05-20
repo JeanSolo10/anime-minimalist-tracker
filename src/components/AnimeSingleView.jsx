@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import "../styles/AnimeSingleView.css";
 import { UserAuth } from "../context/AuthContext";
@@ -8,9 +8,7 @@ axios.defaults.baseURL = "/";
 
 export default function AnimeSingleView() {
   const {
-    currentSeasonAnimes,
     selectedAnimeIndex,
-    nextSeasonAnimes,
     seasonSelected,
   } = useSelector((state) => state.animes);
 

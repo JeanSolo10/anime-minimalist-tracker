@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { removeUserName } from "../features/users/userSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Modal from "./Modal";
 
 export default function Navbar(props) {
   /* Redux */
-  const { username } = useSelector((state) => state.users);
-  const { user, logout } = UserAuth();
+  const { logout } = UserAuth();
   const { setError } = props;
   /* State */
   const [openModal, setOpenModal] = useState(false);

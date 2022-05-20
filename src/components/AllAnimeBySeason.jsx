@@ -7,7 +7,18 @@ import Navbar from "./Navbar";
 
 export default function AllAnimeBySeason(props) {
   const [error, setError] = useState("");
-  const { currentSeasonAnimes } = useSelector((state) => state.animes);
+  const [year, setYear] = useState(new Date().getFullYear());
+  const { seasonSelected } = useSelector((state) => state.animes);
+  const [season, setSeason] = useState();
+  useEffect(() => {
+    handleStateTitle();
+  }, [season]);
+
+  const handleStateTitle = () => {
+    const seasonForTitle = seasonSelected[0].season;
+    setSeason(seasonForTitle);
+  };
+
   const dispatch = useDispatch();
   return (
     <>
@@ -15,10 +26,12 @@ export default function AllAnimeBySeason(props) {
         <Navbar setError={setError} />
         {error && <div className="error-message">{error}</div>}
         <div className="all-anime-bs-header">
-          <h2>Spring 2022</h2>
+          <h2>
+            {season && season.charAt(0).toUpperCase() + season.slice(1)} {year}
+          </h2>
         </div>
         <div className="all-anime-bs-row__posters">
-          {currentSeasonAnimes.map((anime, index) => (
+          {seasonSelected.map((anime, index) => (
             <div anime={anime} key={index} className="all-anime-bs-card">
               <Link
                 onClick={() => dispatch(setAnimeSingleViewIndex(index))}

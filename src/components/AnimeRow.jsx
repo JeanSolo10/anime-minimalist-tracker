@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../styles/AnimeRow.css";
 import {
@@ -9,7 +8,7 @@ import {
   setNextSeasonAnimes,
   setSelectedSeason,
 } from "../features/animes/animeSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function AnimeRow(props) {
   const { title, season, selectedSeasonAnimes, desc } = props;
@@ -55,6 +54,9 @@ export default function AnimeRow(props) {
           <div className="anime-header-view-all">
             <Link
               className="anime-header-view-all-link"
+              onClick={() => {
+                dispatch(setSelectedSeason(season));
+              }}
               to={`/seasons/${season.toString().toLowerCase()}`}
             >
               View All
