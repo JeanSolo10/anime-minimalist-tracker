@@ -18,7 +18,7 @@ export default function MyWatchList() {
     if (authToken && user) {
       fetchWatchAnimeList();
     }
-  }, []);
+  }, [user]);
 
   const fetchWatchAnimeList = async () => {
     const url = `/api/v1/status/${user.uid}`;

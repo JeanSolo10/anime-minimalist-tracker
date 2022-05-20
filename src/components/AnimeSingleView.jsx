@@ -23,7 +23,7 @@ export default function AnimeSingleView() {
     if (user) {
       fetchIsInWatchList();
     }
-  }, []);
+  }, [user]);
 
   const fetchIsInWatchList = async () => {
     const url = `api/v1/users/${user.uid}/${anime.id}/status`;
@@ -37,6 +37,7 @@ export default function AnimeSingleView() {
 
   const handleButtonClick = async (aid) => {
     const authToken = localStorage.getItem("Auth Token");
+    console.log("HANDLE ANIME SINGLE VIEW!!");
     if (!authToken && !user) {
       return setError("You must be logged in to save anime!");
     }
