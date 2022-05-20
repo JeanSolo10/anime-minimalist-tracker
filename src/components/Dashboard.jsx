@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { UserAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import AnimeRow from "./AnimeRow";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function Dashboard() {
   const [error, setError] = useState("");
@@ -17,7 +15,7 @@ export default function Dashboard() {
     const currSeason = getSeason(new Date().getMonth());
     setCurrentSeason(currSeason);
     setNextSeason(getNextseason(currSeason));
-  });
+  }, []);
 
   const getSeason = (month) => {
     if (month >= 3 && month <= 5) {

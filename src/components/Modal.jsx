@@ -1,9 +1,9 @@
 import React from "react";
 import { ImHome } from "react-icons/im";
-import { RiLoginBoxFill, RiLogoutBoxFill } from "react-icons/ri";
+import { RiLogoutBoxFill } from "react-icons/ri";
 import { FaUserPlus } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { BsFillCollectionPlayFill } from "react-icons/bs";
 import { UserAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
