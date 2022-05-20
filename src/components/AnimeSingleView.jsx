@@ -53,7 +53,6 @@ export default function AnimeSingleView() {
   return (
     <>
       <Navbar setError={setError} />
-      {error && <div className="error-message">{error}</div>}
       {anime && (
         <div className="anime-wrapper">
           <div className="anime-title">
