@@ -112,8 +112,9 @@ export default function MyWatchList() {
                   />
                 </div>
                 <div className="row-links-btns">
-                  <div className="title">
+                  <div className="anime-list-title">
                     <p
+                      className="anime-list-title"
                       onClick={() =>
                         handleAnimeTitleClick(
                           anime.id,
@@ -159,6 +160,7 @@ export default function MyWatchList() {
                 <div className="row-links-btns">
                   <div className="title">
                     <p
+                      className="anime-list-title"
                       onClick={() =>
                         handleAnimeTitleClick(
                           anime.id,

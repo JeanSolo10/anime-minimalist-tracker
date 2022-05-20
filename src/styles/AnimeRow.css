@@ -28,6 +28,8 @@
 .row__posters p {
   font-size: 0.8rem;
   width: 90%;
+  color: #3a4654;
+  font-weight: 500;
 }
 
 .anime-header {

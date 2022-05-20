@@ -97,7 +97,7 @@ export default function UserAnimeList(props) {
                 </div>
                 <div className="row-links-btns">
                   <div className="title">
-                    <p
+                    <p className="anime-list-title"
                       onClick={() =>
                         handleAnimeTitleClick(
                           anime.id,
@@ -129,6 +129,7 @@ export default function UserAnimeList(props) {
                 <div className="row-links-btns">
                   <div className="title">
                     <p
+                      className="anime-list-title"
                       onClick={() =>
                         handleAnimeTitleClick(
                           anime.id,

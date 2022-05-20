@@ -268,3 +268,10 @@ code {
 .user-poster {
   text-align: center;
 }
+
+/* Watch lists */
+
+.anime-list-title {
+  color: #3a4654;
+  font-weight: 500;
+}
