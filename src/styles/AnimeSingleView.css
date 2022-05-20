@@ -1,3 +1,8 @@
+.anime-wrapper {
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
+
 .anime-image {
   width: 80%;
 }
@@ -24,14 +29,20 @@
 .anime-synopsis h3 {
   font-size: 1.25rem;
   color: #3a4654;
-  padding-left: 1.5rem;
   margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .anime-synopsis p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #3a4654;
-  padding: 1.5rem;
+  background-color: rgb(250, 250, 250);
+  padding: 1.2rem;
+  border-radius: 5px;
+}
+
+.anime-synopsis {
+  margin-bottom: 30px;
 }
 
 .anime-image-container img {
@@ -66,8 +77,9 @@
 
 .anime-info {
   flex-grow: 1;
-  width: 50%;
   display: grid;
+  background-color: white;
+  padding: 0.5em;
 }
 
 .anime-add-to-list-container {

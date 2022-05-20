@@ -7,7 +7,11 @@
 
 .all-anime-bs-card {
   text-align: center;
-  height: fit-content;
+  height: -moz-fit-content;
+  /* height: fit-content; */
+  background-color: rgb(250, 250, 250);
+  padding-top: 1rem;
+  border-radius: 4px;
 }
 
 .all-anime-bs-row__poster:hover {
@@ -17,18 +21,19 @@
 .all-anime-bs-row__posters {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 1.25rem;
+  padding: 1em;
   justify-content: center;
   height: auto;
-  grid-column-gap: 2rem;
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 2rem;
 }
 
 .all-anime-bs-row__posters p {
   font-size: 0.8rem;
   width: 100%;
-  margin-bottom: 1.5rem;
-  color: #3a4654;
+  color: #3f4b5a;
   padding: 0.5rem;
+  font-weight: 500;
 }
 
 .all-anime-bs-header {
