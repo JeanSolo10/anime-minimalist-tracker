@@ -8,6 +8,8 @@ import Dashboard from "./components/Dashboard";
 import AllAnimeBySeason from "./components/AllAnimeBySeason";
 import AnimeSingleView from "./components/AnimeSingleView";
 import MyWatchList from "./components/MyWatchList";
+import Users from "./components/Users";
+import UserAnimeList from "./components/UserAnimeList";
 
 function App() {
   return (
@@ -20,7 +22,9 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />}></Route>
           <Route path="/seasons/:season" element={<AllAnimeBySeason />}></Route>
           <Route path="/anime/:id/:name" element={<AnimeSingleView />}></Route>
-          <Route path="/:user/animeWatchList" element={<MyWatchList />}></Route>
+          <Route path="/animewatchlist" element={<MyWatchList />}></Route>
+          <Route path="/users" element={<Users />}></Route>
+          <Route path="/users/:username" element={<UserAnimeList />}></Route>
         </Routes>
       </AuthContextProvider>
     </>

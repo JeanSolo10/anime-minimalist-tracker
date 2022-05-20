@@ -1,7 +1,7 @@
 import React from "react";
 import { ImHome } from "react-icons/im";
 import { RiLogoutBoxFill } from "react-icons/ri";
-import { FaUserPlus } from "react-icons/fa";
+import { FaUserPlus, FaUserFriends } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { BsFillCollectionPlayFill } from "react-icons/bs";
@@ -32,7 +32,7 @@ export default function Modal({ open, onClose, handleLogout }) {
           <div className="modal-button-container">
             <Link className="nav-login-link-text" to="/">
               <div className="nav-login-link">
-                <ImHome style={{ marginLeft: 8 }} size="2em" />
+                <ImHome style={{ marginLeft: 8, marginTop: 8 }} size="2em" />
                 <p>Home</p>
               </div>
             </Link>
@@ -45,8 +45,8 @@ export default function Modal({ open, onClose, handleLogout }) {
               </Link>
             )}
             {user && (
-              <div onClick={handleLogout} className="logout-icon">
-                <RiLogoutBoxFill style={{ marginLeft: 8 }} size="2em" />
+              <div onClick={handleLogout} className="nav-logout-link">
+                <RiLogoutBoxFill style={{ marginLeft: 12 }} size="2em" />
                 <p>Logout</p>
               </div>
             )}
@@ -57,20 +57,23 @@ export default function Modal({ open, onClose, handleLogout }) {
               </a>
             )}
             {user && (
-              <Link
-                className="nav-my-list-link-text"
-                to={`/${username}/animewatchlist`}
-              >
+              <Link className="nav-my-list-link-text" to={`/animewatchlist`}>
                 <div className="watch-list-wrapper">
                   <BsFillCollectionPlayFill
                     className="watch-icon"
-                    style={{ marginLeft: 20 }}
+                    style={{ marginLeft: 2 }}
                     size="2em"
                   />
                   <p>WatchList</p>
                 </div>
               </Link>
             )}
+            <Link className="nav-users-link-text" to={`/users`}>
+              <div className="nav-users-link">
+                <FaUserFriends style={{ marginLeft: 8 }} size="2em" />
+                <p>Users</p>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
