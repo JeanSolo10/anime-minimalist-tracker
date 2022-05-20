@@ -7,16 +7,19 @@ import Navbar from "./Navbar";
 axios.defaults.baseURL = "/";
 
 export default function AnimeSingleView() {
-  const { currentSeasonAnimes, selectedAnimeIndex } = useSelector(
-    (state) => state.animes
-  );
+  const {
+    currentSeasonAnimes,
+    selectedAnimeIndex,
+    nextSeasonAnimes,
+    seasonSelected,
+  } = useSelector((state) => state.animes);
 
   const [error, setError] = useState("");
   const [isInWatchList, setIsInwatchList] = useState("");
   const placeholderImage = require("../images/anime_placeholder.jpg");
 
   /* redux */
-  const [anime, setAnime] = useState(currentSeasonAnimes[selectedAnimeIndex]);
+  const [anime, setAnime] = useState(seasonSelected[selectedAnimeIndex]);
   const { user } = UserAuth();
 
   useEffect(() => {

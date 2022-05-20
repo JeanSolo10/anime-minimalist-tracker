@@ -6,29 +6,42 @@ import "../styles/AnimeRow.css";
 import {
   setCurrenSeasonAnimes,
   setAnimeSingleViewIndex,
+  setNextSeasonAnimes,
+  setSelectedSeason,
 } from "../features/animes/animeSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function AnimeRow(props) {
-  const { title, season } = props;
-  //const [currentSeasonAnimes, setcurrentSeasonAnimes] = useState([]);
+  const { title, season, selectedSeasonAnimes, desc } = props;
   const [error, setError] = useState("");
 
   /* redux */
-  const { currentSeasonAnimes } = useSelector((state) => state.animes);
   const dispatch = useDispatch();
 
   useEffect(() => {
     fetchAnime();
-  }, []);
+  }, [season]);
 
   const fetchAnime = async () => {
     try {
-      const response = await axios.get("api/v1/animes");
-      dispatch(setCurrenSeasonAnimes(response.data.results));
+      const url = `api/v1/animes/season/${season}`;
+      if (!season) {
+        return;
+      }
+      const response = await axios.get(url);
+      if (season && desc === "current") {
+        dispatch(setCurrenSeasonAnimes(response.data.results));
+      } else {
+        dispatch(setNextSeasonAnimes(response.data.results));
+      }
     } catch (error) {
       setError(error.message);
     }
+  };
+
+  const handleAnimeClick = (index, season) => {
+    dispatch(setAnimeSingleViewIndex(index));
+    dispatch(setSelectedSeason(season));
   };
 
   return (
@@ -49,27 +62,28 @@ export default function AnimeRow(props) {
           </div>
         </div>
         <div className="row__posters">
-          {currentSeasonAnimes.slice(0, 20).map((anime, index) => (
-            <div anime={anime} key={index} className="anime-card">
-              <Link
-                onClick={() => dispatch(setAnimeSingleViewIndex(index))}
-                to={`/anime/${anime.id}/${anime.name
-                  .toString()
-                  .replaceAll(" ", "-")}`}
-              >
-                <img
-                  className="row__poster"
-                  src={anime.image_url}
-                  alt="anime"
-                />
-              </Link>
-              <p>
-                {anime.name.length > 30
-                  ? `${anime.name.substring(0, 28)}... `
-                  : anime.name}
-              </p>
-            </div>
-          ))}
+          {selectedSeasonAnimes &&
+            selectedSeasonAnimes.slice(0, 20).map((anime, index) => (
+              <div anime={anime} key={index} className="anime-card">
+                <Link
+                  onClick={() => handleAnimeClick(index, season)}
+                  to={`/anime/${anime.id}/${anime.name
+                    .toString()
+                    .replaceAll(" ", "-")}`}
+                >
+                  <img
+                    className="row__poster"
+                    src={anime.image_url}
+                    alt="anime"
+                  />
+                </Link>
+                <p>
+                  {anime.name.length > 30
+                    ? `${anime.name.substring(0, 28)}... `
+                    : anime.name}
+                </p>
+              </div>
+            ))}
         </div>
       </div>
     </>

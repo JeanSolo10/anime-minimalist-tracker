@@ -3,14 +3,20 @@ import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import AnimeRow from "./AnimeRow";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Dashboard() {
   const [error, setError] = useState("");
   const [currentSeason, setCurrentSeason] = useState("");
+  const [nextSeason, setNextSeason] = useState("");
+  const { currentSeasonAnimes, nextSeasonAnimes } = useSelector(
+    (state) => state.animes
+  );
 
   useEffect(() => {
     const currSeason = getSeason(new Date().getMonth());
     setCurrentSeason(currSeason);
+    setNextSeason(getNextseason(currSeason));
   });
 
   const getSeason = (month) => {
@@ -26,11 +32,32 @@ export default function Dashboard() {
     return "Winter";
   };
 
+  const getNextseason = (monthString) => {
+    const nextSeasons = {
+      Spring: "Summer",
+      Fall: "Winter",
+      Winter: "Spring",
+      Summer: "Fall",
+    };
+    return nextSeasons[monthString];
+  };
+
   return (
     <div className="dashboard-wrapper">
       <Navbar setError={setError} />
       {error && <div className="error-message">{error}</div>}
-      <AnimeRow title={`Current Season`} season={currentSeason} />
+      <AnimeRow
+        title={`Current Season`}
+        season={currentSeason}
+        selectedSeasonAnimes={currentSeasonAnimes}
+        desc={"current"}
+      />
+      <AnimeRow
+        title={`Next Season`}
+        season={nextSeason}
+        selectedSeasonAnimes={nextSeasonAnimes}
+        desc={"next"}
+      />
     </div>
   );
 }
