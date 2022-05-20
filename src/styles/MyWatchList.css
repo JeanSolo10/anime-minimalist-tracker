@@ -10,7 +10,7 @@
 
 .row-links-btns {
   display: grid;
-  row-gap: 12px;
+  row-gap: 30px;
 }
 
 .cover {
@@ -47,7 +47,8 @@
   text-decoration: none;
 }
 .mark-completed-btn,
-.mark-delete-btn {
+.mark-delete-btn,
+.mark-remove-btn {
   padding: 0.3em;
   color: #fff;
   background-color: #232391;
@@ -60,13 +61,18 @@
   font-size: 0.9rem;
 }
 
-.mark-completed-btn {
-  margin-top: 2rem;
-}
-.mark-delete-btn {
+.mark-remove-btn {
+  width: 100px;
   background-color: #cf2031;
   border-color: #cf2031;
-  margin-top: 1.5rem;
+  height: 35px;
+}
+
+.mark-delete-btn {
+  width: 100px;
+  background-color: #cf2031;
+  border-color: #cf2031;
+  height: 35px;
 }
 
 .watch-list-title {
@@ -78,4 +84,13 @@
 .watch-list-wrap h3 {
   padding: 0.6rem;
   color: #3a4654;
+}
+
+.edit-btns {
+  display: flex;
+}
+
+.mark-completed-btn {
+  width: 150px;
+  height: 35px;
 }

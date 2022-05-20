@@ -101,7 +101,13 @@ export default function MyWatchList() {
                       onClick={() => handleMarkAsCompleted(anime.id)}
                       className="mark-completed-btn"
                     >
-                      Mark as completed
+                      Mark as Completed
+                    </button>
+                    <button
+                      onClick={() => handleDeleteEntry(anime.id)}
+                      className="mark-remove-btn"
+                    >
+                      Remove
                     </button>
                   </div>
                 </div>
