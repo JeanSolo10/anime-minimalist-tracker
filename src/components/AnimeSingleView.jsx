@@ -19,13 +19,11 @@ export default function AnimeSingleView() {
   const [anime, setAnime] = useState(currentSeasonAnimes[selectedAnimeIndex]);
   const { user } = UserAuth();
 
-  console.log("USER!!!", user);
-
   useEffect(() => {
     if (user) {
       fetchIsInWatchList();
     }
-  }, []);
+  }, [user]);
 
   const fetchIsInWatchList = async () => {
     const url = `api/v1/users/${user.uid}/${anime.id}/status`;
