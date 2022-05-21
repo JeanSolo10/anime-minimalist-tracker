@@ -1,6 +1,6 @@
 # Anime Minimalist Tracker
 
-![](https://github.com/JeanSolo10/anime-minimalist-tracker/blob/master/app_gif/animetracker.gif)
+![](https://github.com/JeanSolo10/anime-minimalist-tracker/blob/master/app_updated_gif/animetracker.gif)
 
 # Introduction
 
