@@ -1,5 +1,7 @@
 # Anime Minimalist Tracker
 
+![](https://github.com/JeanSolo10/anime-minimalist-tracker/blob/master/app_gif/animetracker.gif)
+
 # Introduction
 
 This app was created during the team's time as students at [Code Chrysalis](https://www.codechrysalis.io/).
