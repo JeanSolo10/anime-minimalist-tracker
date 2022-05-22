@@ -109,3 +109,67 @@
   background-color: #2aa846;
   border-color: #1e7e34;
 }
+
+/* Desktop styling */
+
+@media only screen and (min-width: 992px) {
+  .anime-main-body {
+    margin-left: 5rem;
+    margin-right: 5rem;
+    background-color: white;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+  }
+
+  .anime-wrapper {
+    padding: 0;
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+
+  .anime-synopsis p {
+    line-height: 2rem;
+  }
+
+  .anime-title {
+    font-size: 1.5rem;
+    color: #3a4654;
+    text-align: center;
+  }
+
+  .anime-info {
+    margin-left: 1rem;
+  }
+
+  .anime-info p,
+  .anime-genre {
+    font-weight: 450;
+  }
+
+  .anime-info-sub-title {
+    font-weight: 700;
+  }
+
+  .anime-add-to-list-container {
+    text-align: initial;
+  }
+
+  .anime-add-to-list-btn {
+    max-width: 300px;
+  }
+
+  .anime-image-container img {
+    width: 100%;
+    object-fit: cover;
+    margin-left: 0;
+    border-radius: 6px;
+  }
+
+  .anime-trailer iframe {
+    min-height: 400px;
+  }
+
+  .anime-watching-status-btn {
+    max-width: 300px;
+  }
+}

@@ -130,12 +130,62 @@ code {
   padding-left: 1em;
 }
 
+/* authentication forms desktop styling*/
+
+@media only screen and (min-width: 992px) {
+  .signup-form,
+  .login-form,
+  .forgot-password-form {
+    width: 400px;
+  }
+
+  .auth-input {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 50px;
+  }
+
+  .signup-title h2,
+  .login-title h2,
+  .forgot-password-title h2 {
+    font-size: 2rem;
+  }
+}
+
 /* navbar */
 .nav-main-grid {
   display: flex;
   justify-content: space-between;
   padding: 1.25rem 1.2rem 1.2rem 0.75rem;
   color: #3a4654;
+}
+
+@media only screen and (min-width: 992px) {
+  .nav-main-grid {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-button-icon {
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+
+  .signup-btn,
+  .login-btn,
+  .forgot-password-btn {
+    width: 10em;
+    font-size: 1rem;
+  }
+
+  .signup-additional-info,
+  .login-additional-info,
+  .forgot-password-additional-info,
+  .forgot-password-login-link {
+    font-size: 1rem;
+  }
 }
 
 .nav-login-link,
@@ -216,6 +266,7 @@ code {
   top: 8px;
   right: 8px;
   color: #4c5c6a;
+  cursor: pointer;
 }
 
 .modal-button-container a {
@@ -243,6 +294,15 @@ code {
 .signup-icon {
   color: #4c5c6a;
   font-weight: 700;
+}
+
+/* Modal container desktop styling */
+
+@media only screen and (min-width: 992px) {
+  .modalContainer {
+    max-width: 350px;
+    min-height: 225px;
+  }
 }
 
 /* USERS COMPONENT */
@@ -289,4 +349,33 @@ code {
   border-radius: 0.25rem;
   padding: 0.4em;
   padding-left: 1em;
+}
+
+/* Desktop styling */
+@media only screen and (min-width: 992px) {
+  .users-main-grid {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .users-title h2 {
+    font-size: 1.75rem;
+  }
+
+  .user-icon {
+    font-size: 1.5rem;
+  }
+
+  .users-title {
+    margin-bottom: 2rem;
+  }
+
+  .users-main-body {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .watch-list-wrapper {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
 }

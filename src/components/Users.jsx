@@ -34,9 +34,9 @@ export default function Users() {
 
   return (
     <>
-      <div className="user-main-grid">
-        <Navbar setError={setError} />
-        {error && <div className="auth-error-message">{error}</div>}
+      <Navbar setError={setError} />
+      {error && <div className="auth-error-message">{error}</div>}
+      <div className="users-main-grid">
         <div className="users-title">
           <h2>Users</h2>
         </div>
@@ -49,8 +49,8 @@ export default function Users() {
                 to={`/users/${userData.username}`}
               >
                 <div className="user-poster">
-                  <div className="user-icon">
-                    <FaUserAlt size="1.5em" />
+                  <div className="user-icon-grid">
+                    <FaUserAlt className="user-icon" size="1.5em" />
                   </div>
                   <div className="user-name">{userData.username}</div>
                 </div>
