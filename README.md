@@ -19,7 +19,7 @@ Anime minimalist tracker focuses solely on the current and upcoming season shows
 
 This application is deployed to heroku: [Anime Minimalist Tracker](https://anime-minimalist-tracker.herokuapp.com/)
 
-**Note**: Application is currently styled for mobile devices. Desktop styling coming soon!
+**Note**: This application followed a mobile first approach. For the intended experience, please use mobile devices. 
 
 # Set it up locally
 
