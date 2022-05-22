@@ -109,8 +109,9 @@ code {
   color: #721c24;
   background-color: #f8d7da;
   border-color: #f5c6cb;
-  margin-left: 3rem;
-  margin-right: 3rem;
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 1rem;
   border-radius: 0.25rem;
   padding: 0.4em;
   padding-left: 1em;
