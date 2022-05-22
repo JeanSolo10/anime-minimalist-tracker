@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { removeUserName } from "../features/users/userSlice";
 import { useDispatch } from "react-redux";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
 import Modal from "./Modal";
 
 export default function Navbar(props) {
@@ -31,7 +32,9 @@ export default function Navbar(props) {
   return (
     <>
       <nav className="nav-main-grid">
-        <p className="nav-title">Anime Tracker</p>
+        <Link to={`/`} className="nav-title-link">
+          <p className="nav-title">Anime Tracker</p>
+        </Link>
         <div onClick={() => setOpenModal(true)} className="nav-button">
           <GiHamburgerMenu className="nav-button-icon" size="1.7em" />
         </div>
