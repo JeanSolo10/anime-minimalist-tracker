@@ -98,13 +98,15 @@
     display: flex;
     justify-content: space-between;
     color: #3a4654;
+    margin-bottom: 1rem;
   }
 
   .anime-header h2 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   .anime-header-view-all-link {
     font-weight: 500;
+    font-size: 1.2rem;
   }
 }
