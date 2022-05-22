@@ -93,9 +93,9 @@ export default function MyWatchList() {
 
   return (
     <>
+      <Navbar setError={setError} />
+      {error && <div className="auth-error-message">{error}</div>}
       <div className="watch-list-wrapper">
-        <Navbar setError={setError} />
-        {error && <div className="auth-error-message">{error}</div>}
         <div className="watch-list-title">
           <h2>{`${username}'s Watch List`}</h2>
         </div>

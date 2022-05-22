@@ -327,4 +327,9 @@ code {
   .users-main-body {
     grid-template-columns: repeat(5, 1fr);
   }
+
+  .watch-list-wrapper {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
 }
