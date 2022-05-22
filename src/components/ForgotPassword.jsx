@@ -30,6 +30,9 @@ export default function ForgotPassword() {
     if (message === "Firebase: Error (auth/invalid-email).") {
       return "Email not found!";
     }
+    if (message === "Firebase: Error (auth/user-not-found).") {
+      return "User not found!";
+    }
     return message;
   };
 
@@ -56,7 +59,7 @@ export default function ForgotPassword() {
           </div>
         </form>
         <div className="forgot-password-login-link">
-          <Link to="/login">Login</Link>
+          Back to <Link to="/login">Login</Link>
         </div>
         <div className="forgot-password-additional-info">
           Don't have an account yet? <Link to="/signup">Sign up</Link>
