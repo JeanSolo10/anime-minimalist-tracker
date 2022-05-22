@@ -24,7 +24,7 @@ export default function AllAnimeBySeason(props) {
     <>
       <div className="all-anime-bs-row">
         <Navbar setError={setError} />
-        {error && <div className="error-message">{error}</div>}
+        {error && <div className="auth-error-message">{error}</div>}
         <div className="all-anime-bs-header">
           <h2>
             {season && season.charAt(0).toUpperCase() + season.slice(1)} {year}

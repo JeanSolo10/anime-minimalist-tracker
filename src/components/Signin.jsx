@@ -70,7 +70,7 @@ export default function Signin() {
         <div className="login-title">
           <h2 className="text-center mb-4">Login</h2>
         </div>
-        {error && <div className="error-message">{error}</div>}
+        {error && <div className="auth-error-message">{error}</div>}
         <form onSubmit={handleSubmit} className="login-form">
           <input
             className="auth-input"
