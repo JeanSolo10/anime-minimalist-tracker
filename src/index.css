@@ -138,6 +138,15 @@ code {
   color: #3a4654;
 }
 
+@media only screen and (min-width: 992px) {
+  .nav-main-grid {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
 .nav-login-link,
 .nav-logout-link,
 .nav-my-list-link,

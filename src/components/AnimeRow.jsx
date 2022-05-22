@@ -65,25 +65,31 @@ export default function AnimeRow(props) {
         </div>
         <div className="row__posters">
           {selectedSeasonAnimes &&
-            selectedSeasonAnimes.slice(0, 20).map((anime, index) => (
+            selectedSeasonAnimes.slice(0, 15).map((anime, index) => (
               <div anime={anime} key={index} className="anime-card">
-                <Link
-                  onClick={() => handleAnimeClick(index, season)}
-                  to={`/anime/${anime.id}/${anime.name
-                    .toString()
-                    .replaceAll(" ", "-")}`}
-                >
-                  <img
-                    className="row__poster"
-                    src={anime.image_url}
-                    alt="anime"
-                  />
-                </Link>
-                <p>
-                  {anime.name.length > 30
-                    ? `${anime.name.substring(0, 28)}... `
-                    : anime.name}
-                </p>
+                <div className="anime-card-image">
+                  <Link
+                    style={{ display: "inline-block" }}
+                    className="anime-card-image-link"
+                    onClick={() => handleAnimeClick(index, season)}
+                    to={`/anime/${anime.id}/${anime.name
+                      .toString()
+                      .replaceAll(" ", "-")}`}
+                  >
+                    <img
+                      className="row__poster"
+                      src={anime.image_url}
+                      alt="anime"
+                    />
+                  </Link>
+                </div>
+                <div className="anime-card-title">
+                  <p>
+                    {anime.name.length > 30
+                      ? `${anime.name.substring(0, 28)}... `
+                      : anime.name}
+                  </p>
+                </div>
               </div>
             ))}
         </div>
