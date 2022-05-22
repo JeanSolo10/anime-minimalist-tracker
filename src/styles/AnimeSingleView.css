@@ -168,4 +168,8 @@
   .anime-trailer iframe {
     min-height: 400px;
   }
+
+  .anime-watching-status-btn {
+    max-width: 300px;
+  }
 }
