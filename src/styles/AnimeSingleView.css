@@ -120,6 +120,7 @@
     background-color: white;
     border-radius: 6px;
     margin-bottom: 2rem;
+    min-height: 330px;
   }
 
   .anime-wrapper {
@@ -164,6 +165,7 @@
     object-fit: cover;
     margin-left: 0;
     border-radius: 6px;
+    min-height: 330px;
   }
 
   .anime-trailer iframe {
