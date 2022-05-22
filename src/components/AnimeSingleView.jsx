@@ -118,7 +118,7 @@ export default function AnimeSingleView() {
                 </div>
               </div>
             </div>
-            {error && <div className="auth-error-message">{error}</div>}
+            {error && <div className="anime-error-message">{error}</div>}
             <div className="anime-synopsis">
               <h3>Sypnosis</h3>
               <p>{anime.synopsis}</p>

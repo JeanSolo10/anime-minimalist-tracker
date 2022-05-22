@@ -275,3 +275,18 @@ code {
   color: #3a4654;
   font-weight: 500;
 }
+
+/* Animes */
+
+.anime-error-message {
+  text-align: left;
+  font-weight: 400;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  padding: 0.4em;
+  padding-left: 1em;
+}
