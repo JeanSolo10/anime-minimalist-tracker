@@ -130,6 +130,28 @@ code {
   padding-left: 1em;
 }
 
+/* authentication forms desktop styling*/
+
+@media only screen and (min-width: 992px) {
+  .signup-form,
+  .login-form,
+  .forgot-password-form {
+    width: 400px;
+  }
+
+  .auth-input {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 50px;
+  }
+
+  .signup-title h2,
+  .login-title h2,
+  .forgot-password-title h2 {
+    font-size: 2rem;
+  }
+}
+
 /* navbar */
 .nav-main-grid {
   display: flex;
@@ -149,6 +171,20 @@ code {
   .nav-button-icon {
     font-size: 1.25rem;
     cursor: pointer;
+  }
+
+  .signup-btn,
+  .login-btn,
+  .forgot-password-btn {
+    width: 10em;
+    font-size: 1rem;
+  }
+
+  .signup-additional-info,
+  .login-additional-info,
+  .forgot-password-additional-info,
+  .forgot-password-login-link {
+    font-size: 1rem;
   }
 }
 
