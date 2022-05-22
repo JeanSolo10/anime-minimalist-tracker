@@ -218,6 +218,11 @@ code {
   align-self: center;
 }
 
+.nav-title-link {
+  text-decoration: none;
+  color: #3f4750;
+}
+
 /* Dashboard */
 .dashboard-wrapper {
   min-height: 100vh;
