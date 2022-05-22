@@ -266,6 +266,7 @@ code {
   top: 8px;
   right: 8px;
   color: #4c5c6a;
+  cursor: pointer;
 }
 
 .modal-button-container a {
@@ -293,6 +294,15 @@ code {
 .signup-icon {
   color: #4c5c6a;
   font-weight: 700;
+}
+
+/* Modal container desktop styling */
+
+@media only screen and (min-width: 992px) {
+  .modalContainer {
+    max-width: 350px;
+    min-height: 225px;
+  }
 }
 
 /* USERS COMPONENT */
