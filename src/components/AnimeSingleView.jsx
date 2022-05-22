@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import "../styles/AnimeSingleView.css";
 import { UserAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 axios.defaults.baseURL = "/";
 
@@ -38,7 +39,7 @@ export default function AnimeSingleView() {
   const handleButtonClick = async (aid) => {
     const authToken = localStorage.getItem("Auth Token");
     if (!authToken && !user) {
-      return setError("You must be log in to save anime!");
+      return setError("You must be logged in to add anime!");
     }
     const url = `/api/v1/status`;
     await axios.post(url, {
@@ -118,7 +119,11 @@ export default function AnimeSingleView() {
                 </div>
               </div>
             </div>
-            {error && <div className="anime-error-message">{error}</div>}
+            {error && (
+              <div className="anime-error-message">
+                {error} <Link to={`/login`}>Login</Link>
+              </div>
+            )}
             <div className="anime-synopsis">
               <h3>Sypnosis</h3>
               <p>{anime.synopsis}</p>
