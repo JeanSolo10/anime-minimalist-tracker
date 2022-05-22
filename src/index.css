@@ -145,6 +145,11 @@ code {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
+
+  .nav-button-icon {
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
 }
 
 .nav-login-link,
@@ -298,4 +303,28 @@ code {
   border-radius: 0.25rem;
   padding: 0.4em;
   padding-left: 1em;
+}
+
+/* Desktop styling */
+@media only screen and (min-width: 992px) {
+  .users-main-grid {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .users-title h2 {
+    font-size: 1.75rem;
+  }
+
+  .user-icon {
+    font-size: 1.5rem;
+  }
+
+  .users-title {
+    margin-bottom: 2rem;
+  }
+
+  .users-main-body {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
