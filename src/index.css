@@ -312,11 +312,21 @@ code {
   color: #3a4654;
 }
 
+.users-title {
+  margin-bottom: 1rem;
+}
+
 .users-main-body {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
-  padding: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-flow: column;
+  row-gap: 2rem;
+  padding: 0.5rem;
+}
+
+.user-name {
+  margin: 0 auto;
+  overflow-wrap: break-word;
 }
 
 .users-main-body a {
