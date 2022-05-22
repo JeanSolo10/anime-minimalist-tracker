@@ -22,9 +22,9 @@ export default function AllAnimeBySeason(props) {
 
   return (
     <>
+      <Navbar setError={setError} />
+      {error && <div className="auth-error-message">{error}</div>}
       <div className="all-anime-bs-row">
-        <Navbar setError={setError} />
-        {error && <div className="auth-error-message">{error}</div>}
         <div className="all-anime-bs-header">
           <h2>
             {season && season.charAt(0).toUpperCase() + season.slice(1)} {year}
@@ -33,19 +33,23 @@ export default function AllAnimeBySeason(props) {
         <div className="all-anime-bs-row__posters">
           {seasonSelected.map((anime, index) => (
             <div anime={anime} key={index} className="all-anime-bs-card">
-              <Link
-                onClick={() => dispatch(setAnimeSingleViewIndex(index))}
-                to={`/anime/${anime.id}/${anime.name
-                  .toString()
-                  .replaceAll(" ", "-")}`}
-              >
-                <img
-                  className="all-anime-bs-row__poster"
-                  src={anime.image_url}
-                  alt="anime"
-                />
-              </Link>
-              <p>{anime.name}</p>
+              <div className="anime-card-image">
+                <Link
+                  onClick={() => dispatch(setAnimeSingleViewIndex(index))}
+                  to={`/anime/${anime.id}/${anime.name
+                    .toString()
+                    .replaceAll(" ", "-")}`}
+                >
+                  <img
+                    className="all-anime-bs-row__poster"
+                    src={anime.image_url}
+                    alt="anime"
+                  />
+                </Link>
+              </div>
+              <div className="anime-card-title">
+                <p>{anime.name}</p>
+              </div>
             </div>
           ))}
         </div>

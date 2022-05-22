@@ -7,7 +7,7 @@
   margin-right: 15px;
   transition: transform 450ms;
   width: auto;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .row__posters {
@@ -58,7 +58,7 @@
   }
 
   .row__poster {
-    max-height: 250px;
+    max-height: 280px;
   }
 
   .row__poster:hover {
@@ -92,6 +92,7 @@
     width: 90%;
     color: #3a4654;
     font-weight: 700;
+    margin: 0 auto;
   }
 
   .anime-header {
