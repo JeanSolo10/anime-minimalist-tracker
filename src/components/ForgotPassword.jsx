@@ -30,6 +30,9 @@ export default function ForgotPassword() {
     if (message === "Firebase: Error (auth/invalid-email).") {
       return "Email not found!";
     }
+    if (message === "Firebase: Error (auth/user-not-found).") {
+      return "User not found!";
+    }
     return message;
   };
 
@@ -39,7 +42,7 @@ export default function ForgotPassword() {
         <div className="forgot-password-title">
           <h2 className="text-center mb-4">Password Reset</h2>
         </div>
-        {error && <div className="error-message">{error}</div>}
+        {error && <div className="auth-error-message">{error}</div>}
         {message && <div className="password-reset-message">{message}</div>}
         <form onSubmit={handleSubmit} className="forgot-password-form">
           <input
@@ -56,7 +59,7 @@ export default function ForgotPassword() {
           </div>
         </form>
         <div className="forgot-password-login-link">
-          <Link to="/login">Login</Link>
+          Back to <Link to="/login">Login</Link>
         </div>
         <div className="forgot-password-additional-info">
           Don't have an account yet? <Link to="/signup">Sign up</Link>

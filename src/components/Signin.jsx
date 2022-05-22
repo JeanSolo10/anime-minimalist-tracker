@@ -14,7 +14,7 @@ export default function Signin() {
   const { signIn, user } = UserAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     let componentMounted = true;
     const authToken = localStorage.getItem("Auth Token");
@@ -56,7 +56,7 @@ export default function Signin() {
 
   const handleFirebaseErrors = (message) => {
     if (message === "Firebase: Error (auth/wrong-password).") {
-      return "Wrong Password!";
+      return "Invalid Password!";
     }
     if (message === "Firebase: Error (auth/user-not-found).") {
       return "User not found!";
@@ -70,7 +70,7 @@ export default function Signin() {
         <div className="login-title">
           <h2 className="text-center mb-4">Login</h2>
         </div>
-        {error && <div className="error-message">{error}</div>}
+        {error && <div className="auth-error-message">{error}</div>}
         <form onSubmit={handleSubmit} className="login-form">
           <input
             className="auth-input"

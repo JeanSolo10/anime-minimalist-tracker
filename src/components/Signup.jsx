@@ -43,6 +43,9 @@ export default function Signup() {
       if (isUsernameTaken) {
         return setError("Username is taken!");
       }
+      if (usernameRef.current.value.length > 25) {
+        return setError("Username cannot be longer than 25 characters!");
+      }
       const response = await createUser(
         emailRef.current.value,
         passwordRef.current.value
@@ -101,7 +104,7 @@ export default function Signup() {
         <div className="signup-title">
           <h2 className="text-center mb-4">Sign up</h2>
         </div>
-        {error && <div className="error-message">{error}</div>}
+        {error && <div className="auth-error-message">{error}</div>}
         <form onSubmit={handleSubmit} className="signup-form">
           <input
             className="auth-input"

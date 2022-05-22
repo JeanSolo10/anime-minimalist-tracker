@@ -43,7 +43,7 @@ export default function Dashboard() {
   return (
     <div className="dashboard-wrapper">
       <Navbar setError={setError} />
-      {error && <div className="error-message">{error}</div>}
+      {error && <div className="auth-error-message">{error}</div>}
       <AnimeRow
         title={`Current Season`}
         season={currentSeason}

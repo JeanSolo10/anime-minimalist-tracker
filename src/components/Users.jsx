@@ -36,7 +36,7 @@ export default function Users() {
     <>
       <div className="user-main-grid">
         <Navbar setError={setError} />
-        {error && <div className="error-message">{error}</div>}
+        {error && <div className="auth-error-message">{error}</div>}
         <div className="users-title">
           <h2>Users</h2>
         </div>

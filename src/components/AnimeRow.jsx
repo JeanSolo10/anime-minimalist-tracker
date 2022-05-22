@@ -46,7 +46,7 @@ export default function AnimeRow(props) {
   return (
     <>
       <div className="row">
-        {error && <div className="error-message">{error}</div>}
+        {error && <div className="auth-error-message">{error}</div>}
         <div className="anime-header">
           <h2>
             {title} - {season}

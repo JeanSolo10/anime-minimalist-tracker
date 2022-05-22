@@ -102,15 +102,15 @@ code {
   margin-bottom: 1rem;
 }
 
-.error-message {
+.auth-error-message {
   text-align: left;
-  margin-bottom: 1rem;
   font-weight: 400;
   color: #721c24;
   background-color: #f8d7da;
   border-color: #f5c6cb;
-  margin-left: 3rem;
-  margin-right: 3rem;
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 1rem;
   border-radius: 0.25rem;
   padding: 0.4em;
   padding-left: 1em;
@@ -274,4 +274,19 @@ code {
 .anime-list-title {
   color: #3a4654;
   font-weight: 500;
+}
+
+/* Animes */
+
+.anime-error-message {
+  text-align: left;
+  font-weight: 400;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  padding: 0.4em;
+  padding-left: 1em;
 }
