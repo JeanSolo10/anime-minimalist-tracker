@@ -1,15 +1,13 @@
 .all-anime-bs-card img {
-  width: 80%;
   object-fit: cover;
   transition: transform 450ms;
   border-radius: 6px;
+  max-width: 120px;
 }
 
 .all-anime-bs-card {
   text-align: center;
   height: -moz-fit-content;
-  /* height: fit-content; */
-  background-color: rgb(250, 250, 250);
   padding-top: 1rem;
   border-radius: 4px;
 }
@@ -20,8 +18,8 @@
   padding: 1em;
   justify-content: center;
   height: auto;
-  grid-column-gap: 1.5rem;
-  grid-row-gap: 2rem;
+  grid-column-gap: 1.1rem;
+  grid-row-gap: 1rem;
 }
 
 .all-anime-bs-row__posters p {
