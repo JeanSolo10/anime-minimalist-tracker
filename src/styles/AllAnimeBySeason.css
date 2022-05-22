@@ -58,10 +58,6 @@
     padding-top: 1rem;
   }
 
-  .all-anime-bs-card img {
-    border-radius: 6px;
-  }
-
   .all-anime-bs-header {
     display: flex;
     justify-content: space-between;
@@ -87,9 +83,11 @@
   }
 
   .all-anime-bs-card img {
+    border-radius: 6px;
     width: auto;
     max-height: 280px;
     margin-bottom: 0;
+    max-width: none;
   }
 
   .all-anime-bs-row__poster:hover {
