@@ -3,7 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { setUserName } from "../features/users/userSlice";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+
 axios.defaults.baseURL = "/";
 
 export default function Signin() {
@@ -39,6 +42,14 @@ export default function Signin() {
       localStorage.setItem("Auth Token", response._tokenResponse.idToken);
       const username = await fetchUserName(response.user.uid);
       dispatch(setUserName(username));
+      toast.success("Login successful!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+      });
       navigate("/");
     } catch (error) {
       const errorMessage = handleFirebaseErrors(error.message);

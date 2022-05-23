@@ -5,6 +5,7 @@ import "../styles/AnimeSingleView.css";
 import { UserAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import { toast } from "react-toastify";
 axios.defaults.baseURL = "/";
 
 export default function AnimeSingleView() {
@@ -48,6 +49,14 @@ export default function AnimeSingleView() {
       status: "watching",
     });
     setIsInwatchList("watching");
+    toast.success("Successfully Added!", {
+      position: "top-right",
+      autoClose: 500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+      progress: undefined,
+    });
     return;
   };
 

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { setUserName } from "../features/users/userSlice";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import axios from "axios";
 axios.defaults.baseURL = "/";
 
@@ -73,6 +74,14 @@ export default function Signup() {
       } catch (error) {
         setError(error.message);
       }
+      toast.success("Signup successful!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+      });
       navigate("/");
     } catch (error) {
       const errorMessage = handleFirebaseErrors(error.message);
