@@ -52,7 +52,10 @@ export default function Users() {
                   <div className="user-icon-grid">
                     <FaUserAlt className="user-icon" size="1.5em" />
                   </div>
-                  <div className="user-name">{userData.username}</div>
+                  <div className="user-name">
+                    {userData.username.charAt(0).toUpperCase() +
+                      userData.username.slice(1)}
+                  </div>
                 </div>
               </Link>
             ))}

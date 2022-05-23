@@ -112,7 +112,9 @@ export default function MyWatchList() {
       {error && <div className="auth-error-message">{error}</div>}
       <div className="watch-list-wrapper">
         <div className="watch-list-title">
-          <h2>{`${username}'s Watch List`}</h2>
+          <h2>{`${
+            username.charAt(0).toUpperCase() + username.slice(1)
+          }'s Watch List`}</h2>
         </div>
         <div className="watch-list-wrap">
           <h3>Watching</h3>
