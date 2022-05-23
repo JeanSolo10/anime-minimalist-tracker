@@ -9,6 +9,7 @@ import {
 } from "../features/animes/animeSlice";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import DeleteModal from "../components/DeleteModal";
 axios.defaults.baseURL = "/";
 
 export default function MyWatchList() {
@@ -17,6 +18,8 @@ export default function MyWatchList() {
   const [error, setError] = useState("");
   const [completedList, setCompletedList] = useState([]);
   const { user } = UserAuth();
+  const [openModal, setOpenModal] = useState(false);
+  const [animeToBeRemoved, setAnimeToBeRemoved] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -65,8 +68,13 @@ export default function MyWatchList() {
     }
   };
 
+  const setDeleteModal = (aid) => {
+    setOpenModal(true);
+    setAnimeToBeRemoved(aid);
+  };
+
   const handleDeleteEntry = async (aid) => {
-    const url = `/api/v1/status/${user.uid}/${aid}`;
+    const url = `/api/v1/status/${user.uid}/${animeToBeRemoved}`;
     try {
       await axios.delete(url);
       fetchWatchAnimeList();
@@ -93,6 +101,13 @@ export default function MyWatchList() {
 
   return (
     <>
+      <DeleteModal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        animeToBeRemoved={setAnimeToBeRemoved}
+        setOpenModal={setOpenModal}
+        handleDeleteEntry={handleDeleteEntry}
+      />
       <Navbar setError={setError} />
       {error && <div className="auth-error-message">{error}</div>}
       <div className="watch-list-wrapper">
@@ -127,18 +142,22 @@ export default function MyWatchList() {
                     </p>
                   </div>
                   <div className="edit-btns">
-                    <button
-                      onClick={() => handleMarkAsCompleted(anime.id)}
-                      className="mark-completed-btn"
-                    >
-                      Mark as Completed
-                    </button>
-                    <button
-                      onClick={() => handleDeleteEntry(anime.id)}
-                      className="mark-remove-btn"
-                    >
-                      Remove
-                    </button>
+                    <div>
+                      <button
+                        onClick={() => handleMarkAsCompleted(anime.id)}
+                        className="mark-completed-btn"
+                      >
+                        Mark as Completed
+                      </button>
+                    </div>
+                    <div>
+                      <button
+                        onClick={() => setDeleteModal(anime.id)}
+                        className="mark-remove-btn"
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -174,7 +193,7 @@ export default function MyWatchList() {
                   </div>
                   <div className="edit-btns">
                     <button
-                      onClick={() => handleDeleteEntry(anime.id)}
+                      onClick={() => setDeleteModal(anime.id)}
                       className="mark-delete-btn"
                     >
                       Delete Entry
