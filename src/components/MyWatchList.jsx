@@ -142,18 +142,22 @@ export default function MyWatchList() {
                     </p>
                   </div>
                   <div className="edit-btns">
-                    <button
-                      onClick={() => handleMarkAsCompleted(anime.id)}
-                      className="mark-completed-btn"
-                    >
-                      Mark as Completed
-                    </button>
-                    <button
-                      onClick={() => setDeleteModal(anime.id)}
-                      className="mark-remove-btn"
-                    >
-                      Remove
-                    </button>
+                    <div>
+                      <button
+                        onClick={() => handleMarkAsCompleted(anime.id)}
+                        className="mark-completed-btn"
+                      >
+                        Mark as Completed
+                      </button>
+                    </div>
+                    <div>
+                      <button
+                        onClick={() => setDeleteModal(anime.id)}
+                        className="mark-remove-btn"
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
