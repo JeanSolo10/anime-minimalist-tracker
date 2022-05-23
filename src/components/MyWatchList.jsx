@@ -155,7 +155,7 @@ export default function MyWatchList() {
                         onClick={() => setDeleteModal(anime.id)}
                         className="mark-remove-btn"
                       >
-                        Remove
+                        Delete
                       </button>
                     </div>
                   </div>
@@ -196,7 +196,7 @@ export default function MyWatchList() {
                       onClick={() => setDeleteModal(anime.id)}
                       className="mark-delete-btn"
                     >
-                      Delete Entry
+                      Delete
                     </button>
                   </div>
                 </div>
