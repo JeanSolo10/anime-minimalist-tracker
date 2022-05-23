@@ -11,12 +11,14 @@ import MyWatchList from "./components/MyWatchList";
 import Users from "./components/Users";
 import UserAnimeList from "./components/UserAnimeList";
 import ScrollToTop from "./components/ScrollToTop";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <>
       <AuthContextProvider>
         <ScrollToTop>
+          <ToastContainer />
           <Routes>
             <Route path="/login" element={<Signin />}></Route>
             <Route path="/signup" element={<Signup />}></Route>

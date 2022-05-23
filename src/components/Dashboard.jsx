@@ -10,6 +10,7 @@ export default function Dashboard() {
   const { currentSeasonAnimes, nextSeasonAnimes } = useSelector(
     (state) => state.animes
   );
+  const { username } = useSelector((state) => state.users);
 
   useEffect(() => {
     const currSeason = getSeason(new Date().getMonth());
