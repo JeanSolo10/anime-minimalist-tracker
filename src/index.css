@@ -448,4 +448,18 @@ code {
     margin-left: 2rem;
     margin-right: 2rem;
   }
+
+  .deleteModalContainer {
+    display: block;
+    width: 30%;
+  }
+
+  .delete-modal-message {
+    padding: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .delete-modal-button-container {
+    justify-content: center;
+  }
 }
