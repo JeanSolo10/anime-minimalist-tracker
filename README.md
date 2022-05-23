@@ -1,6 +1,6 @@
 # Anime Minimalist Tracker
 
-![](https://github.com/JeanSolo10/anime-minimalist-tracker/blob/master/app_gif/animetracker.gif)
+<img src="https://github.com/JeanSolo10/anime-minimalist-tracker/blob/master/app_gif/animetracker.gif" width="290" height="580"/>
 
 Live link: [Anime Minimalist Tracker](https://anime-minimalist-tracker.herokuapp.com/)
 
