@@ -1,12 +1,14 @@
 # Anime Minimalist Tracker
 
-![](https://github.com/JeanSolo10/anime-minimalist-tracker/blob/master/app_updated_gif/animetracker.gif)
+![](https://github.com/JeanSolo10/anime-minimalist-tracker/blob/master/app_gif/animetracker.gif)
+
+Live link: [Anime Minimalist Tracker](https://anime-minimalist-tracker.herokuapp.com/)
+
+**Note:** This application followed a mobile first approach. For the intended experience, please use mobile devices.
 
 # Introduction
 
-This app was created during the team's time as students at [Code Chrysalis](https://www.codechrysalis.io/).
-
-Users can keep track of anime shows they are watching on sites like myanimelist. However, these type of sites contain a lot of information that is overwhelming for both new and veteran anime fans. 
+Users can keep track of anime shows they are watching on sites like MyAnimeList. However, these type of sites contain a lot of information that is overwhelming for both new and veteran anime fans. 
 
 As a new anime fan, you might be interested in recently released shows and might not want to browse through the thousands of anime available.
 As an avid anime viewer, you might be tracking your favorite shows on sites where abundant information persists. You might also have to add descriptions, number of episodes, show status, rating and more in order to add a new show.
@@ -14,12 +16,6 @@ As an avid anime viewer, you might be tracking your favorite shows on sites wher
 Anime minimalist tracker focuses solely on the current and upcoming season shows and provides minimal data so that you can search for a show you might want to watch. Additionally, you can add any show for track keeping, update its status from "watching" to "completed" and delete it from your lists with a single click.
 
 # Getting Started
-
-## Try the application online!
-
-This application is deployed to heroku: [Anime Minimalist Tracker](https://anime-minimalist-tracker.herokuapp.com/)
-
-**Note**: This application followed a mobile first approach. For the intended experience, please use mobile devices. 
 
 # Set it up locally
 
