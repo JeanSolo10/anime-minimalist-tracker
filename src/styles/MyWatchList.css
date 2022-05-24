@@ -52,8 +52,8 @@
 .mark-remove-btn {
   padding: 0.3em;
   color: #fff;
-  background-color: #232391;
-  border-color: #232391;
+  background-color: #2424c3;
+  border-color: #2e2ec0;
   cursor: pointer;
   font-weight: 600;
   border-radius: 4px;
@@ -65,15 +65,15 @@
 
 .mark-remove-btn {
   width: 100px;
-  background-color: #cf2031;
-  border-color: #cf2031;
+  background-color: #cf3645;
+  border-color: #cf3645;
   height: 35px;
 }
 
 .mark-delete-btn {
   width: 100px;
-  background-color: #cf2031;
-  border-color: #cf2031;
+  background-color: #cf3645;
+  border-color: #cf3645;
   height: 35px;
 }
 
