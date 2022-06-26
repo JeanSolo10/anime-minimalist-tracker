@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   currentSeasonAnimes: [],
   nextSeasonAnimes: [],
+  lastSeasonAnimes: [],
   selectedAnimeIndex: 0,
   username: "",
   seasonSelected: [],
@@ -21,6 +22,9 @@ export const animesSlice = createSlice({
     setNextSeasonAnimes: (state, action) => {
       state.nextSeasonAnimes = action.payload;
     },
+    setLastSeasonAnimes: (state, action) => {
+      state.lastSeasonAnimes = action.payload;
+    },
     setSelectedSeason: (state, action) => {
       if (action.payload.toLowerCase() === "spring") {
         state.seasonSelected = state.currentSeasonAnimes;
@@ -38,6 +42,7 @@ export const {
   setAnimeSingleViewIndex,
   setNextSeasonAnimes,
   setSelectedSeason,
+  setLastSeasonAnimes,
 } = animesSlice.actions;
 
 export default animesSlice.reducer;

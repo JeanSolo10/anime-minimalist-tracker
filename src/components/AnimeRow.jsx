@@ -7,6 +7,7 @@ import {
   setAnimeSingleViewIndex,
   setNextSeasonAnimes,
   setSelectedSeason,
+  setLastSeasonAnimes,
 } from "../features/animes/animeSlice";
 import { useDispatch } from "react-redux";
 
@@ -28,10 +29,12 @@ export default function AnimeRow(props) {
         return;
       }
       const response = await axios.get(url);
-      if (season && desc === "current") {
+      if (desc === "current") {
         dispatch(setCurrenSeasonAnimes(response.data.results));
-      } else {
+      } else if (desc === "next") {
         dispatch(setNextSeasonAnimes(response.data.results));
+      } else {
+        dispatch(setLastSeasonAnimes(response.data.results));
       }
     } catch (error) {
       setError(error.message);

@@ -7,15 +7,16 @@ export default function Dashboard() {
   const [error, setError] = useState("");
   const [currentSeason, setCurrentSeason] = useState("");
   const [nextSeason, setNextSeason] = useState("");
-  const { currentSeasonAnimes, nextSeasonAnimes } = useSelector(
-    (state) => state.animes
-  );
+  const [lastSeason, setLastSeason] = useState("");
+  const { currentSeasonAnimes, nextSeasonAnimes, lastSeasonAnimes } =
+    useSelector((state) => state.animes);
   const { username } = useSelector((state) => state.users);
 
   useEffect(() => {
-    const currSeason = getSeason(new Date().getMonth());
+    const currSeason = getSeason(new Date().getMonth() + 1);
     setCurrentSeason(currSeason);
     setNextSeason(getNextseason(currSeason));
+    setLastSeason(getLastSeason(currSeason));
   }, []);
 
   const getSeason = (month) => {
@@ -41,6 +42,16 @@ export default function Dashboard() {
     return nextSeasons[monthString];
   };
 
+  const getLastSeason = (monthString) => {
+    const nextSeasons = {
+      Spring: "Winter",
+      Fall: "Summer",
+      Winter: "Fall",
+      Summer: "Spring",
+    };
+    return nextSeasons[monthString];
+  };
+
   return (
     <div className="dashboard-wrapper">
       <Navbar setError={setError} />
@@ -56,6 +67,12 @@ export default function Dashboard() {
         season={nextSeason}
         selectedSeasonAnimes={nextSeasonAnimes}
         desc={"next"}
+      />
+      <AnimeRow
+        title={`Last Season`}
+        season={lastSeason}
+        selectedSeasonAnimes={lastSeasonAnimes}
+        desc={"last"}
       />
     </div>
   );
