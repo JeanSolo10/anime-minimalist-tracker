@@ -6,12 +6,18 @@ import { UserAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { toast } from "react-toastify";
+import getSeason from "../utils/getSeason";
+import getNextSeason from "../utils/getNextSeason";
+
 axios.defaults.baseURL = "/";
 
 export default function AnimeSingleView() {
   const { selectedAnimeIndex, seasonSelected } = useSelector(
     (state) => state.animes
   );
+
+  const currSeason = getSeason(new Date().getMonth() + 1);
+  const nextSeason = getNextSeason(currSeason);
 
   const [error, setError] = useState("");
   const [isInWatchList, setIsInwatchList] = useState("");
@@ -101,30 +107,12 @@ export default function AnimeSingleView() {
                     ))}
                 </div>
                 <div className="anime-add-to-list-container">
-                  {isInWatchList === "watching" ? (
-                    <button
-                      disabled={true}
-                      className="anime-watching-status-btn"
-                    >
-                      {isInWatchList.charAt(0).toUpperCase() +
-                        isInWatchList.slice(1)}
-                    </button>
-                  ) : isInWatchList === "completed" ? (
-                    <button
-                      disabled={true}
-                      className="anime-completed-status-btn"
-                    >
-                      {isInWatchList.charAt(0).toUpperCase() +
-                        isInWatchList.slice(1)}
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => handleButtonClick(anime.id)}
-                      className="anime-add-to-list-btn"
-                    >
-                      Add to watch list
-                    </button>
-                  )}
+                  <WatchListBtn
+                    isInWatchList={isInWatchList}
+                    handleButtonClick={handleButtonClick}
+                    anime={anime}
+                    nextSeason={nextSeason}
+                  />
                 </div>
               </div>
             </div>
@@ -150,3 +138,43 @@ export default function AnimeSingleView() {
     </>
   );
 }
+
+const WatchListBtn = ({
+  isInWatchList,
+  handleButtonClick,
+  anime,
+  nextSeason,
+}) => {
+  console.log("NEXT SEASON", nextSeason);
+  console.log(anime);
+  if (nextSeason.toLowerCase() === anime.season) {
+    console.log("bruh");
+    return (
+      <button disabled={true} className="anime-add-to-list-btn">
+        Comming Soon!
+      </button>
+    );
+  }
+  if (isInWatchList === "watching") {
+    return (
+      <button disabled={true} className="anime-watching-status-btn">
+        {isInWatchList.charAt(0).toUpperCase() + isInWatchList.slice(1)}
+      </button>
+    );
+  } else if (isInWatchList === "completed") {
+    return (
+      <button disabled={true} className="anime-completed-status-btn">
+        {isInWatchList.charAt(0).toUpperCase() + isInWatchList.slice(1)}
+      </button>
+    );
+  } else {
+    return (
+      <button
+        onClick={() => handleButtonClick(anime.id)}
+        className="anime-add-to-list-btn"
+      >
+        Add to watch list
+      </button>
+    );
+  }
+};
