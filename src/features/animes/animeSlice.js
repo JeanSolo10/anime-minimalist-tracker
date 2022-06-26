@@ -1,4 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import getSeason from "../../utils/getSeason";
+import getLastSeason from "../../utils/getLastSeason";
+import getNextSeason from "../../utils/getNextSeason";
 
 const initialState = {
   currentSeasonAnimes: [],
@@ -26,11 +29,14 @@ export const animesSlice = createSlice({
       state.lastSeasonAnimes = action.payload;
     },
     setSelectedSeason: (state, action) => {
-      if (action.payload.toLowerCase() === "spring") {
+      const currSeason = getSeason(new Date().getMonth() + 1);
+      const nextSeason = getNextSeason(currSeason);
+      if (action.payload.toLowerCase() === currSeason.toLowerCase()) {
         state.seasonSelected = state.currentSeasonAnimes;
-      }
-      if (action.payload.toLowerCase() === "summer") {
+      } else if (action.payload.toLowerCase() === nextSeason.toLowerCase()) {
         state.seasonSelected = state.nextSeasonAnimes;
+      } else {
+        state.seasonSelected = state.lastSeasonAnimes;
       }
     },
   },
