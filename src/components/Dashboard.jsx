@@ -33,16 +33,16 @@ export default function Dashboard() {
         desc={"current"}
       />
       <AnimeRow
-        title={`Next Season`}
-        season={nextSeason}
-        selectedSeasonAnimes={nextSeasonAnimes}
-        desc={"next"}
-      />
-      <AnimeRow
         title={`Last Season`}
         season={lastSeason}
         selectedSeasonAnimes={lastSeasonAnimes}
         desc={"last"}
+      />
+      <AnimeRow
+        title={`Next Season`}
+        season={nextSeason}
+        selectedSeasonAnimes={nextSeasonAnimes}
+        desc={"next"}
       />
     </div>
   );
