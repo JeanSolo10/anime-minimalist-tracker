@@ -26,7 +26,7 @@ export default function Modal({ open, onClose, handleLogout }) {
         >
           <div className="close-btn-container">
             <p onClick={onClose} className="modal-close-btn">
-              <IoIosCloseCircle size="1.5em" />
+              <IoIosCloseCircle size="1.8em" />
             </p>
           </div>
           <div className="modal-button-container">

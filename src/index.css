@@ -161,7 +161,7 @@ code {
 }
 
 .nav-button {
-  background-color: white;
+  background-color: #fbfbfb;
   padding-left: 6px;
   padding-right: 6px;
   padding-top: 4px;
@@ -231,6 +231,8 @@ code {
 .nav-title-link {
   text-decoration: none;
   color: #3f4750;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /* Dashboard */
@@ -251,7 +253,7 @@ code {
 .modalContainer {
   min-width: 250px;
   width: 50%;
-  min-height: 200px;
+  min-height: 220px;
   position: fixed;
   top: 40%;
   left: 50%;
@@ -271,9 +273,12 @@ code {
   padding: 1rem;
   align-items: center;
   margin-top: -12px;
+  padding-bottom: 1.75rem;
 }
 .close-btn-container {
   width: 100%;
+  margin-bottom: 1rem;
+  padding: 2px;
 }
 
 .modal-close-btn {
