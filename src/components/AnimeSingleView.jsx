@@ -27,10 +27,13 @@ export default function AnimeSingleView() {
   const [anime, setAnime] = useState(seasonSelected[selectedAnimeIndex]);
   const { user } = UserAuth();
 
+  console.log(anime.episodes);
+
   useEffect(() => {
     if (user) {
       fetchIsInWatchList();
     }
+    setAnime(seasonSelected[selectedAnimeIndex]);
   }, [user, selectedAnimeIndex]);
 
   const fetchIsInWatchList = async () => {
@@ -87,13 +90,17 @@ export default function AnimeSingleView() {
                 <div className="anime-score">
                   <p>
                     <span className="anime-info-sub-title">SCORE: </span>
-                    {`${anime.score} / 10`}
+                    {anime.score !== null
+                      ? `${anime.score} / 10`
+                      : `not available`}
                   </p>
                 </div>
                 <div className="anime-episodes">
                   <p>
                     <span className="anime-info-sub-title">EPISODES: </span>
-                    {anime.episodes}
+                    {anime.episodes !== null
+                      ? `${anime.episodes}`
+                      : `not available`}
                   </p>
                 </div>
                 <div className="anime-genres">
@@ -121,16 +128,19 @@ export default function AnimeSingleView() {
                 {error} <Link to={`/login`}>Login</Link>
               </div>
             )}
-            <div className="anime-synopsis">
-              <h3>Sypnosis</h3>
-              <p>{anime.synopsis}</p>
-            </div>
-            <div className="anime-trailer">
-              <iframe
-                src={anime ? anime.embed_url : undefined}
-                title="anime trailer"
-                allowFullScreen={true}
-              ></iframe>
+            <div className="anime-extra-details-body">
+              <div className="anime-synopsis">
+                <h3>Sypnosis</h3>
+                <p>{anime.synopsis}</p>
+              </div>
+              <div className="anime-trailer">
+                <h3>Trailer</h3>
+                <iframe
+                  src={anime ? anime.embed_url : undefined}
+                  title="anime trailer"
+                  allowFullScreen={true}
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>

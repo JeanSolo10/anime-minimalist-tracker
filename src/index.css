@@ -29,7 +29,7 @@ code {
   line-height: 40px;
   padding: 0 15px;
   color: rgba(92, 114, 138, 1);
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(250, 250, 250);
 }
 
 .signup-form-container,
@@ -74,8 +74,8 @@ code {
   padding: 0.8em;
   width: 8em;
   color: #fff;
-  background-color: #0a80ff;
-  border-color: #0a80ff;
+  background-color: #3ea2ee;
+  border-color: #3ea2ee;
   cursor: pointer;
   font-weight: 600;
   border-radius: 6px;
@@ -422,8 +422,8 @@ code {
   padding: 0.8em;
   width: 6em;
   color: #fff;
-  background-color: #0a80ff;
-  border-color: #0a80ff;
+  background-color: #3ea2ee;
+  border-color: #3ea2ee;
   cursor: pointer;
   font-weight: 600;
   border-radius: 6px;
