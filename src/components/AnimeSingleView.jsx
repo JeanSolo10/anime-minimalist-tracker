@@ -27,8 +27,6 @@ export default function AnimeSingleView() {
   const [anime, setAnime] = useState(seasonSelected[selectedAnimeIndex]);
   const { user } = UserAuth();
 
-  console.log(anime.episodes);
-
   useEffect(() => {
     if (user) {
       fetchIsInWatchList();
@@ -155,10 +153,7 @@ const WatchListBtn = ({
   anime,
   nextSeason,
 }) => {
-  console.log("NEXT SEASON", nextSeason);
-  console.log(anime);
   if (nextSeason.toLowerCase() === anime.season) {
-    console.log("bruh");
     return (
       <button disabled={true} className="anime-add-to-list-btn">
         Comming Soon!
