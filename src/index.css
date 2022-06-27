@@ -160,6 +160,16 @@ code {
   color: #3a4654;
 }
 
+.nav-button {
+  background-color: white;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border: 1px solid #ccc !important;
+  border-radius: 5px;
+}
+
 @media only screen and (min-width: 992px) {
   .nav-main-grid {
     margin-left: 1rem;
