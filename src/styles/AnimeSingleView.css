@@ -58,7 +58,7 @@
 }
 
 .anime-image-container {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 }
 
 .anime-image-container img {
@@ -133,12 +133,11 @@
 
 @media only screen and (min-width: 992px) {
   .anime-main-body {
-    margin-left: 5rem;
-    margin-right: 5rem;
     background-color: white;
-    border-radius: 6px;
     margin-bottom: 2rem;
     min-height: 330px;
+    padding-right: 30px;
+    padding-left: 30px;
   }
 
   .anime-wrapper {
@@ -158,7 +157,7 @@
   }
 
   .anime-info {
-    margin-left: 1rem;
+    margin-left: 2rem;
   }
 
   .anime-info p,
