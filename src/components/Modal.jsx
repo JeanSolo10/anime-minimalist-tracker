@@ -1,5 +1,4 @@
 import React from "react";
-import { ImHome } from "react-icons/im";
 import { RiLogoutBoxFill } from "react-icons/ri";
 import { FaUserPlus, FaUserFriends } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
@@ -26,16 +25,10 @@ export default function Modal({ open, onClose, handleLogout }) {
         >
           <div className="close-btn-container">
             <p onClick={onClose} className="modal-close-btn">
-              <IoIosCloseCircle size="1.5em" />
+              <IoIosCloseCircle size="1.8em" />
             </p>
           </div>
           <div className="modal-button-container">
-            <Link className="nav-login-link-text" to="/">
-              <div className="nav-login-link">
-                <ImHome style={{ marginLeft: 8, marginTop: 8 }} size="2em" />
-                <p>Home</p>
-              </div>
-            </Link>
             {!user && (
               <Link className="nav-login-link-text" to="/login">
                 <div className="nav-login-link">

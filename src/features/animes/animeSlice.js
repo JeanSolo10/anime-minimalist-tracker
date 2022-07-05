@@ -1,8 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import getSeason from "../../utils/getSeason";
+import getLastSeason from "../../utils/getLastSeason";
+import getNextSeason from "../../utils/getNextSeason";
 
 const initialState = {
   currentSeasonAnimes: [],
   nextSeasonAnimes: [],
+  lastSeasonAnimes: [],
   selectedAnimeIndex: 0,
   username: "",
   seasonSelected: [],
@@ -21,12 +25,18 @@ export const animesSlice = createSlice({
     setNextSeasonAnimes: (state, action) => {
       state.nextSeasonAnimes = action.payload;
     },
+    setLastSeasonAnimes: (state, action) => {
+      state.lastSeasonAnimes = action.payload;
+    },
     setSelectedSeason: (state, action) => {
-      if (action.payload.toLowerCase() === "spring") {
+      const currSeason = getSeason(new Date().getMonth() + 1);
+      const nextSeason = getNextSeason(currSeason);
+      if (action.payload.toLowerCase() === currSeason.toLowerCase()) {
         state.seasonSelected = state.currentSeasonAnimes;
-      }
-      if (action.payload.toLowerCase() === "summer") {
+      } else if (action.payload.toLowerCase() === nextSeason.toLowerCase()) {
         state.seasonSelected = state.nextSeasonAnimes;
+      } else {
+        state.seasonSelected = state.lastSeasonAnimes;
       }
     },
   },
@@ -38,6 +48,7 @@ export const {
   setAnimeSingleViewIndex,
   setNextSeasonAnimes,
   setSelectedSeason,
+  setLastSeasonAnimes,
 } = animesSlice.actions;
 
 export default animesSlice.reducer;

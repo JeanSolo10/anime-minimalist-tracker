@@ -2,44 +2,25 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import AnimeRow from "./AnimeRow";
 import { useSelector } from "react-redux";
+import getSeason from "../utils/getSeason";
+import getNextSeason from "../utils/getNextSeason";
+import getLastSeason from "../utils/getLastSeason";
 
 export default function Dashboard() {
   const [error, setError] = useState("");
   const [currentSeason, setCurrentSeason] = useState("");
   const [nextSeason, setNextSeason] = useState("");
-  const { currentSeasonAnimes, nextSeasonAnimes } = useSelector(
-    (state) => state.animes
-  );
+  const [lastSeason, setLastSeason] = useState("");
+  const { currentSeasonAnimes, nextSeasonAnimes, lastSeasonAnimes } =
+    useSelector((state) => state.animes);
   const { username } = useSelector((state) => state.users);
 
   useEffect(() => {
-    const currSeason = getSeason(new Date().getMonth());
+    const currSeason = getSeason(new Date().getMonth() + 1);
     setCurrentSeason(currSeason);
-    setNextSeason(getNextseason(currSeason));
+    setNextSeason(getNextSeason(currSeason));
+    setLastSeason(getLastSeason(currSeason));
   }, []);
-
-  const getSeason = (month) => {
-    if (month >= 3 && month <= 5) {
-      return "Spring";
-    }
-    if (month >= 6 && month <= 8) {
-      return "Summer";
-    }
-    if (month >= 9 && month >= 11) {
-      return "Fall";
-    }
-    return "Winter";
-  };
-
-  const getNextseason = (monthString) => {
-    const nextSeasons = {
-      Spring: "Summer",
-      Fall: "Winter",
-      Winter: "Spring",
-      Summer: "Fall",
-    };
-    return nextSeasons[monthString];
-  };
 
   return (
     <div className="dashboard-wrapper">
@@ -50,6 +31,12 @@ export default function Dashboard() {
         season={currentSeason}
         selectedSeasonAnimes={currentSeasonAnimes}
         desc={"current"}
+      />
+      <AnimeRow
+        title={`Last Season`}
+        season={lastSeason}
+        selectedSeasonAnimes={lastSeasonAnimes}
+        desc={"last"}
       />
       <AnimeRow
         title={`Next Season`}

@@ -17,26 +17,25 @@ function App() {
   return (
     <>
       <AuthContextProvider>
-        <ScrollToTop>
-          <ToastContainer />
-          <Routes>
-            <Route path="/login" element={<Signin />}></Route>
-            <Route path="/signup" element={<Signup />}></Route>
-            <Route path="/" element={<Dashboard />}></Route>
-            <Route path="/forgot-password" element={<ForgotPassword />}></Route>
-            <Route
-              path="/seasons/:season"
-              element={<AllAnimeBySeason />}
-            ></Route>
-            <Route
-              path="/anime/:id/:name"
-              element={<AnimeSingleView />}
-            ></Route>
-            <Route path="/animewatchlist" element={<MyWatchList />}></Route>
-            <Route path="/users" element={<Users />}></Route>
-            <Route path="/users/:username" element={<UserAnimeList />}></Route>
-          </Routes>
-        </ScrollToTop>
+        <ToastContainer />
+        <Routes>
+          <Route path="/login" element={<Signin />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/" element={<Dashboard />}></Route>
+          <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+          <Route path="/seasons/:season" element={<AllAnimeBySeason />}></Route>
+          <Route
+            path="/anime/:id/:name"
+            element={
+              <ScrollToTop>
+                <AnimeSingleView />
+              </ScrollToTop>
+            }
+          ></Route>
+          <Route path="/animewatchlist" element={<MyWatchList />}></Route>
+          <Route path="/users" element={<Users />}></Route>
+          <Route path="/users/:username" element={<UserAnimeList />}></Route>
+        </Routes>
       </AuthContextProvider>
     </>
   );

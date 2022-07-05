@@ -6,10 +6,7 @@ const PORT = process.env.PORT || 5000;
 
 (async () => {
   try {
-    if (process.env.NODE_ENV === "development") {
-      await db.migrate.latest();
-      await db.seed.run();
-    }
+    await db.migrate.latest();
     app.listen(PORT, () => {
       console.log(`App listening on port ${PORT}!`);
     });
