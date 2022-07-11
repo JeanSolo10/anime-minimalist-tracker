@@ -4,6 +4,8 @@
 
 This app is hosted at: https://anime-minimalist-tracker.herokuapp.com/
 
+Demo video: https://www.youtube.com/watch?v=BRvmm6jlZb8&ab_channel=JeanSolo
+
 
 **Note:** This application followed a mobile first approach. For the intended experience, please use mobile devices.
 
