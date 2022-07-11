@@ -2,9 +2,11 @@
 
 <img src="https://github.com/JeanSolo10/anime-minimalist-tracker/blob/master/app_gif/animetracker.gif" width="290" height="580"/>
 
-This app is hosted at: https://anime-minimalist-tracker.herokuapp.com/
+## This app is hosted at: 
+- https://anime-minimalist-tracker.herokuapp.com/
 
-Demo video: https://www.youtube.com/watch?v=BRvmm6jlZb8&ab_channel=JeanSolo
+## Demo video: 
+- https://www.youtube.com/watch?v=BRvmm6jlZb8&ab_channel=JeanSolo
 
 
 **Note:** This application followed a mobile first approach. For the intended experience, please use mobile devices.
