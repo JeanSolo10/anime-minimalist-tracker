@@ -4,8 +4,17 @@ const AnimeDataFetcher = require("../../utils/animes");
  * @returns { Promise<void> }
  */
 exports.seed = async function (knex) {
-  const data = await AnimeDataFetcher.fetchCurrenSeasonAnime();
+  const animeFetcher = new AnimeDataFetcher();
+
   // Deletes ALL existing entries
   await knex("animes").del();
-  await knex("animes").insert(data);
+
+  const currentSeasonAnimeData = await animeFetcher.fetchCurrenSeasonAnime();
+  await knex("animes").insert(currentSeasonAnimeData);
+
+  const nextSeasonAnimeData = await animeFetcher.fetchNextSeasonAnime();
+  await knex("animes").insert(nextSeasonAnimeData);
+
+  const lastSeasonAnimeData = await animeFetcher.fetchLastSeasonAnime();
+  await knex("animes").insert(lastSeasonAnimeData);
 };
