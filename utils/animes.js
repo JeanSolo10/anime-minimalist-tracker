@@ -15,14 +15,22 @@ class AnimeDataFetcher {
       let currentPage = 0;
       while (morePagesAvailable) {
         currentPage++;
-        const url = `https://api.jikan.moe/v4/seasons/${year}/${season}?page=${currentPage}`;
-        const result = await axios.get(url);
+        const result = await this.fetchAnimeByYearAndSeason(
+          year,
+          season,
+          currentPage
+        );
         const hasNextPage = result.data.pagination.has_next_page;
-        const animeData = result.data.data[0];
-        if (!this.animeIdsInDb.has(animeData.mal_id)) {
-          allAnimeData = [...allAnimeData, animeData];
-          this.animeIdsInDb.add(animeData.mal_id);
-        }
+
+        const animeData = result.data.data;
+
+        animeData.forEach((anime) => {
+          if (!this.animeIdsInDb.has(anime.mal_id)) {
+            allAnimeData.push(anime);
+            this.animeIdsInDb.add(anime.mal_id);
+          }
+        });
+
         morePagesAvailable = hasNextPage;
         /* timeout needed to avoid api request limit */
         await setTimeout(2500);
@@ -47,15 +55,6 @@ class AnimeDataFetcher {
     }
   }
 
-  fetchGenres(genres) {
-    const result = { genreTypes: [] };
-
-    for (let i = 0; i < genres.length; i++) {
-      result.genreTypes = [...result.genreTypes, genres[i].name];
-    }
-    return result;
-  }
-
   async fetchNextSeasonAnime() {
     let allAnimeData = [];
     try {
@@ -66,15 +65,21 @@ class AnimeDataFetcher {
       let currentPage = 0;
       while (morePagesAvailable) {
         currentPage++;
-        const result = await axios.get(
-          `https://api.jikan.moe/v4/seasons/${year}/${season}?page=${currentPage}`
+        const result = await this.fetchAnimeByYearAndSeason(
+          year,
+          season,
+          currentPage
         );
         const hasNextPage = result.data.pagination.has_next_page;
-        const animeData = result.data.data[0];
-        if (!this.animeIdsInDb.has(animeData.mal_id)) {
-          allAnimeData = [...allAnimeData, animeData];
-          this.animeIdsInDb.add(animeData.mal_id);
-        }
+        const animeData = result.data.data;
+
+        animeData.forEach((anime) => {
+          if (!this.animeIdsInDb.has(anime.mal_id)) {
+            allAnimeData.push(anime);
+            this.animeIdsInDb.add(anime.mal_id);
+          }
+        });
+
         morePagesAvailable = hasNextPage;
         /* timeout needed to avoid api request limit */
         await setTimeout(2500);
@@ -109,15 +114,21 @@ class AnimeDataFetcher {
       let currentPage = 0;
       while (morePagesAvailable) {
         currentPage++;
-        const result = await axios.get(
-          `https://api.jikan.moe/v4/seasons/${year}/${season}?page=${currentPage}`
+        const result = await this.fetchAnimeByYearAndSeason(
+          year,
+          season,
+          currentPage
         );
         const hasNextPage = result.data.pagination.has_next_page;
-        const animeData = result.data.data[0];
-        if (!this.animeIdsInDb.has(animeData.mal_id)) {
-          allAnimeData = [...allAnimeData, animeData];
-          this.animeIdsInDb.add(animeData.mal_id);
-        }
+        const animeData = result.data.data;
+
+        animeData.forEach((anime) => {
+          if (!this.animeIdsInDb.has(anime.mal_id)) {
+            allAnimeData.push(anime);
+            this.animeIdsInDb.add(anime.mal_id);
+          }
+        });
+
         morePagesAvailable = hasNextPage;
         /* timeout needed to avoid api request limit */
         await setTimeout(2500);
@@ -178,6 +189,20 @@ class AnimeDataFetcher {
       summer: "spring",
     };
     return nextSeasons[month];
+  }
+
+  fetchGenres(genres) {
+    const result = { genreTypes: [] };
+
+    for (let i = 0; i < genres.length; i++) {
+      result.genreTypes = [...result.genreTypes, genres[i].name];
+    }
+    return result;
+  }
+
+  fetchAnimeByYearAndSeason(year, season, currentPage) {
+    const animeAPIUrl = `https://api.jikan.moe/v4/seasons/${year}/${season}?page=${currentPage}`;
+    return axios.get(animeAPIUrl);
   }
 }
 
